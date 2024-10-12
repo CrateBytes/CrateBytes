@@ -1,0 +1,49 @@
+{
+    "name": "cratebytes",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "vite dev",
+        "build": "vite build",
+        "preview": "vite preview",
+        "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+        "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+    },
+    "devDependencies": {
+        "@iconify-json/line-md": "^1.2.1",
+        "@iconify-json/mdi": "^1.2.0",
+        "@iconify/svelte": "^4.0.2",
+        "@sveltejs/adapter-auto": "^3.0.0",
+        "@sveltejs/kit": "^2.0.0",
+        "@sveltejs/vite-plugin-svelte": "^3.0.0",
+        "@types/axios": "^0.9.36",
+        "autoprefixer": "^10.4.20",
+        "prisma": "^5.20.0",
+        "svelte-check": "^4.0.0",
+        "tailwindcss": "^3.4.9",
+        "typescript": "^5.0.0",
+        "unplugin-icons": "^0.19.3",
+        "vite": "^5.0.3"
+    },
+    "type": "module",
+    "dependencies": {
+        "@auth/prisma-adapter": "^2.5.2",
+        "@auth/sveltekit": "^1.5.2",
+        "@paralleldrive/cuid2": "^2.2.2",
+        "@prisma/client": "^5.20.0",
+        "@types/jsonwebtoken": "^9.0.7",
+        "axios": "^1.7.7",
+        "bits-ui": "^0.21.16",
+        "clsx": "^2.1.1",
+        "d3": "^7.9.0",
+        "formsnap": "^1.0.1",
+        "jsonwebtoken": "^9.0.2",
+        "lucide-svelte": "^0.446.0",
+        "mode-watcher": "^0.4.1",
+        "svelte-headless-table": "^0.18.2",
+        "svelte-highlight": "^7.7.0",
+        "sveltekit-superforms": "^2.19.0",
+        "tailwind-merge": "^2.5.2",
+        "tailwind-variants": "^0.2.1",
+        "zod": "^3.23.8"
+    }
+}
