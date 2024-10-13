@@ -17,6 +17,7 @@
 
     import { goto } from "$app/navigation";
     import NewNavbar from "$lib/components/NewNavbar.svelte";
+    import CustomFooter from "$lib/components/CustomFooter.svelte";
     export let data;
 
     const SplashText: string[] = [
@@ -96,7 +97,7 @@
 </script>
 
 <NewNavbar />
-<div class="relative h-screen">
+<div class="relative">
 
     <!-- #region Delete Project -->
     <AlertDialog.Root open={DeleteProjectDialogTrigger} onOpenChange={(open) => {
@@ -272,5 +273,6 @@
             </Card.Root>
         </div>
     </main>
-    
 </div>
+
+<CustomFooter/>
