@@ -39,4 +39,4 @@ npm run dev
 We welcome contributions big or small in different directions. The best way to do this is to talk to us on our <a href="https://discord.gg/8aaK9sC27r">Discord Server.</a> 💬
 
 <h2 id="open-source">🛠️ Open-source</h2> 
-This repo is entirely [MIT licensed](/LICENSE). You have the permission to use or distribute our source code freely in your projects. 🎉
+This repo is entirely <a href="/LICENSE">MIT licensed</a>. You have the permission to use or distribute our source code freely in your projects. 🎉
