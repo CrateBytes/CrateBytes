@@ -39,7 +39,7 @@
         </button>
     
         <div class="flex items-center gap-2">
-            <Button on:click={() => goto("#")} variant="ghost" size="icon">
+            <Button href="https://github.com/CrateBytes/CrateBytes" variant="ghost" size="icon">
                 <Icon icon="mdi:github"
                     class="absolute h-[1.2rem] w-[1.2rem]"
                 />
