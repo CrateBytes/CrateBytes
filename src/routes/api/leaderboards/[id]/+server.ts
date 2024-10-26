@@ -52,10 +52,18 @@ export async function GET({ params, url }) {
         },
     });
 
+    const formattedEntries = entries.map((entry) => ({
+        ...entry,
+        player: {
+            ...entry.player,
+            PlayerCustomData: entry.player.PlayerCustomData[0] || null,
+        },
+    }));
+
     return new Response(
         JSON.stringify({
             leaderboard,
-            entries: entries,
+            entries: formattedEntries,
             totalEntries: totalEntries,
             pages: Math.ceil(totalEntries / 10),
         }),

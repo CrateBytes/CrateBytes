@@ -104,13 +104,15 @@ model Player {
 
 model PlayerCustomData {
   id                       String  @id @default(cuid()) @unique
-  playerId                 String  @unique
+  playerId                 String
   projectId                String
   data                     String  @db.VarChar(255)
   player                   Player  @relation(fields: [playerId], references: [id]) 
 
   createdAt                DateTime @default(now())
   updatedAt                DateTime @updatedAt
+
+  @@unique([playerId, projectId])
 }
 
 model PlayerSession {
@@ -154,4 +156,15 @@ model LeaderboardEntry {
   updatedAt    DateTime @updatedAt
 
   @@unique([playerId, leaderboardId])
+}
+
+model News {
+  id           String   @id @default(cuid()) @unique
+  title        String
+  description  String
+  link         String
+  image        String
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }

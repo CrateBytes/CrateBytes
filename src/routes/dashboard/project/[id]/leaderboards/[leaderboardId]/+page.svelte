@@ -25,7 +25,7 @@
     type LeaderboardEntry = {
         PlayerCustomData: {
             data: string;
-        }[];
+        };
         playerId: string;
         guest: boolean;
         score: number;
