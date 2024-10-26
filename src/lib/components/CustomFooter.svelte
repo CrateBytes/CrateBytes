@@ -16,5 +16,6 @@
             <Icon icon="mdi:discord" class="inline-block w-6 h-6" />
         </a>
     </div>
+    <p>Built by game developers, for game developers.</p>
     <p>&copy; {new Date().getFullYear()} CrateBytes. All rights reserved.</p>
 </footer>

@@ -5,21 +5,24 @@
 
 <h2 id="bytecrates">🚀 CrateBytes is the ultimate open-source backend solution for games</h2>
 
-*   ⚡ Seamless integration with game engines
-*   🚀 Self-host with a few commands
-*   🔄 An alternative to AccelByte, Pragma Engine, and LootLocker
+-   ⚡ Seamless integration with game engines
+-   🚀 Self-host with a few commands
+-   🔄 An alternative to AccelByte, Pragma Engine, and LootLocker
 
 <h2 id="features">🧐 Features</h2>
 Here are some of the project's best features:
 
-*   📊 Game Analytics
-*   🏆 Leaderboards
-*   🎮 Steam & Guest Login
-*   🗂️ Player metadata
-*   📲 Push notifications [soon]
-*   🛋️ Lobbies [soon]
-*   💬 Messaging [soon]
-*   💰 Monetization [soon]
+-   📊 Game Analytics
+-   🏆 Leaderboards
+-   🎮 Steam & Guest Login
+-   🗂️ Player metadata
+-   📝 Feedback form [soon]
+-   ⭐ Feedback rating system [soon]
+-   🤖 Feedback Discord bot integration [soon]
+-   📲 Push notifications [soon]
+-   🛋️ Lobbies [soon]
+-   💬 Messaging [soon]
+-   💰 Monetization [soon]
 
 <h2 id="get-started">🎉 Get started for free</h2>
 <p>CrateBytes is still under development, an official release is coming soon 🚧</p>
