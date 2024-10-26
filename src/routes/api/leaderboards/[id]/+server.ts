@@ -46,12 +46,18 @@ export async function GET({ params, url }) {
         take: 10,
     });
 
+    const totalEntries = await prisma.leaderboardEntry.count({
+        where: {
+            leaderboardId: id,
+        },
+    });
+
     return new Response(
         JSON.stringify({
             leaderboard,
             entries: entries,
-            totalEntries: entries.length,
-            pages: Math.ceil(entries.length / 10),
+            totalEntries: totalEntries,
+            pages: Math.ceil(totalEntries / 10),
         }),
         {
             headers: { "Content-Type": "application/json" },

@@ -74,7 +74,7 @@
                         <DropdownMenu.Label class="text-sm font-medium"> {$page.data.session.user?.name} </DropdownMenu.Label>
                         <DropdownMenu.Separator />
                         <DropdownMenu.Item class="text-sm font-medium cursor-pointer" on:click={() => goto('/dashboard')}>Dashboard</DropdownMenu.Item>
-                        <DropdownMenu.Item class="text-sm font-medium cursor-pointer" on:click={() => goto('/settings')}>Settings</DropdownMenu.Item>
+                        <!-- <DropdownMenu.Item class="text-sm font-medium cursor-pointer" on:click={() => goto('/settings')}>Settings</DropdownMenu.Item> -->
                         <DropdownMenu.Separator />
                         <DropdownMenu.Item class="text-sm font-medium cursor-pointer" on:click={() => signOut()}> Logout </DropdownMenu.Item>
                     </DropdownMenu.Content>
