@@ -87,6 +87,9 @@ export const load = (async ({ params, locals }) => {
         where: {
             projectId: params.id,
             endTime: null,
+            lastHeartbeat: {
+                gt: new Date(new Date().getTime() - 10 * 60 * 1000),
+            },
         },
     });
 
