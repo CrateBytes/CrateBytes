@@ -27,6 +27,69 @@ export const load = (async ({ params, locals }) => {
         throw redirect(302, "/dashboard");
     }
 
+    const players = await prisma.player.findMany({
+        where: {
+            projectId: params.id,
+            lastPlayed: {
+                gt: new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000), // 7 days
+            },
+        },
+        select: {
+            guest: true,
+            playTime: true,
+            lastPlayed: true,
+            createdAt: true,
+            updatedAt: true,
+        },
+    });
+
+    // Get player count and average play time for each day
+    const Days: {
+        day: number;
+        count: number;
+        averagePlayTime: number;
+    }[] = [];
+
+    for (let i = 0; i < 7; i++) {
+        const date = new Date(new Date().getTime() - i * 24 * 60 * 60 * 1000);
+        const count = players.filter(
+            (player) => player.lastPlayed.toDateString() === date.toDateString()
+        ).length;
+        const averagePlayTime =
+            players
+                .filter(
+                    (player) =>
+                        player.lastPlayed.toDateString() === date.toDateString()
+                )
+                .reduce((acc, player) => {
+                    return acc + player.playTime;
+                }, 0) / count;
+
+        Days.push({
+            day: i + 1,
+            count,
+            averagePlayTime,
+        });
+    }
+
+    const TotalPlayerCount = await prisma.player.count({
+        where: {
+            projectId: params.id,
+        },
+    });
+
+    const AveragePlayTime =
+        players.reduce((acc, player) => {
+            return acc + player.playTime;
+        }, 0) / players.length;
+
+    const CurrentActivePlayers = await prisma.playerSession.count({
+        where: {
+            projectId: params.id,
+            endTime: null,
+        },
+    });
+
     return {
         project: {
             id: project.id,
@@ -37,5 +100,9 @@ export const load = (async ({ params, locals }) => {
             name: project.owner.name,
             image: project.owner.image,
         },
+        Days,
+        TotalPlayerCount,
+        AveragePlayTime,
+        CurrentActivePlayers,
     };
 }) satisfies PageServerLoad;

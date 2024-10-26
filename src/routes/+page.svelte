@@ -35,7 +35,7 @@
         {
             title: 'Free',
             description: 'Perfect for small projects and personal use.',
-            features: ['Up to 10,000 MAU per month', 'Basic moderation', 'Basic integrations', 'Community support'],
+            features: ['Up to 5,000 MAU per month', 'Basic moderation', 'Basic integrations', 'Community support'],
             buttonText: 'Get Started',
             link: "/dashboard"
         },

@@ -98,8 +98,8 @@ model Player {
   updatedAt                DateTime @updatedAt
 
   PlayerCustomData         PlayerCustomData[]
-  PlayerSession PlayerSession[]
-  LeaderboardEntry LeaderboardEntry[]
+  PlayerSession            PlayerSession[]
+  LeaderboardEntry         LeaderboardEntry[]
 }
 
 model PlayerCustomData {
