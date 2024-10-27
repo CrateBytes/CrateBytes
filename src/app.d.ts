@@ -9,6 +9,16 @@ declare global {
         // interface PageData {}
         // interface PageState {}
         // interface Platform {}
+        interface Post {
+            title: string;
+            description: string;
+            author: string;
+            thumbnail: string;
+            date: string;
+            categories: string[];
+            published: boolean;
+            slug: string;
+        }
     }
 }
 

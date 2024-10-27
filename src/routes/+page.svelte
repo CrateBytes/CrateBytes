@@ -35,14 +35,14 @@
         {
             title: 'Free',
             description: 'Perfect for small projects and personal use.',
-            features: ['Up to 5,000 MAU per month', 'Basic moderation', 'Basic integrations', 'Community support'],
+            features: ['Basic moderation', 'Basic integrations', 'Community support'],
             buttonText: 'Get Started',
             link: "/dashboard"
         },
         {
             title: 'Enterprise',
             description: 'Ideal for large-scale projects and businesses.',
-            features: ['Custom MAU per month', 'Advanced moderation', 'Custom integrations', '24/7 support'],
+            features: ['Advanced moderation', 'Custom integrations', '24/7 support'],
             buttonText: 'Contact Sales',
             link: "#"
         },
@@ -55,6 +55,14 @@
         }
     ];
 </script>
+
+<svelte:head>
+    <title>CrateBytes - Open-Source Backend for Game Development | Simplify Your Workflow</title>
+    <meta name="description" content="CrateBytes offers an open-source backend solution designed to streamline game development. Simplify server management, user authentication, and more." />
+    <meta name="keywords" content="CrateBytes, game development backend, open-source backend for games, backend solution for game developers, server management, user authentication, data storage for games." />
+    <meta property="og:title" content="CrateBytes - Open-Source Backend for Game Development" />
+    <meta property="og:description" content="CrateBytes, game development backend, open-source backend for games, backend solution for game developers, server management, user authentication, data storage for games." />
+</svelte:head>
 
 <NewNavbar />
 <div class="relative">
@@ -105,6 +113,11 @@
                 {/each}
             </div>
         </div>
+    </section>
+
+    <!-- Blogs & Docs -->
+    <section class="my-32">
+
     </section>
 
     <!-- Pricing -->

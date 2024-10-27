@@ -258,15 +258,14 @@
                 </Card.Header>
                 <Card.Content class="flex flex-col gap-4">
                     {#each data.News as News}
-                        <div class="flex flex-row items-center gap-2">
-                            <div class="flex flex-col">
-                                <div class="text-md font-bold">{News.title}</div>
-                                <div class="text-muted-foreground text-sm h-10 overflow-hidden text-ellipsis">{News.description}</div>
-                            </div>
-
-                            <img src={News.image} alt={News.title} class="max-w-24 max-h-14 object-cover" />
+                    <div class="flex flex-row items-center gap-2 cursor-pointer">
+                        <div class="flex flex-col">
+                            <a href="/blog/{News.slug}"><span class="text-md font-bold hover:underline">{News.title}</span></a>
+                            <span class="text-muted-foreground text-sm h-10 overflow-hidden line-clamp-2">{News.description}</span>
                         </div>
 
+                        <img src={News.thumbnail} alt={News.title} class="max-w-30 max-h-20 object-cover" />
+                    </div>
                         <Separator />
                     {/each}
                 </Card.Content>
