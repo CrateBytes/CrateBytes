@@ -1,0 +1,71 @@
+---
+sidebarTitle: "Leaderboards"
+title: "Leaderboards"
+icon: "trophy"
+description: "Implement global leaderboards and rankings with the CrateBytes API to boost player competitiveness and engagement."
+---
+
+## Submit Score
+
+The `Submit Score` endpoint allows you to submit a player's score to a specific leaderboard.
+
+### Endpoint
+
+```http
+POST /api/game/leaderboards/[leaderboard id]/submit
+```
+
+<ParamField body="score" type="string" required>
+    The score to submit to the leaderboard. must be passed in the request body.
+</ParamField>
+
+<ParamField header="authorization header" type="string" required>
+    Bearer [token]
+</ParamField>
+
+### Example Response
+
+```json
+Score submitted
+```
+
+## Get leaderboard data
+
+The `Get Leaderboard Data` endpoint allows you to retrieve the data for a specific leaderboard, including player scores and pagination information.
+
+### Endpoint
+
+```http
+GET /api/leaderboards/[leaderboard id]?page=[page number]
+```
+
+### Example Response
+
+```json
+{
+  "leaderboard": {
+    "id": "cm2s3akc200000cme6xt95b6m"
+  },
+  "entries": [
+    {
+      "player": {
+        "guest": true,
+        "playerId": "cm2s3aokq00010cmecg6bfbmi",
+        "PlayerCustomData": null
+      },
+      "score": 990
+    },
+    {
+      "player": {
+        "guest": true,
+        "playerId": "cm2s3auy400020cme2e21as3h",
+        "PlayerCustomData": "custom data"
+      },
+      "score": 988
+    },
+    ...
+  ],
+  "totalEntries": 480,
+  "pages": 48
+}
+```

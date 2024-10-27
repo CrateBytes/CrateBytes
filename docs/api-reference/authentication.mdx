@@ -1,0 +1,88 @@
+---
+sidebarTitle: "Authentication"
+title: "Authentication"
+icon: "lock"
+description: "The CrateBytes API offers **Steam Authentication** for secure logins with Steam accounts and **Guest Authentication** for access without registration."
+---
+
+## Guest Authentication
+
+Guest Authentication allows users to access the CrateBytes API without needing to register or link a Steam account.
+This method provides a seamless way for new users to get started while still ensuring that each player has a unique identifier within the system.
+
+### Endpoint
+
+```http
+POST /api/guestlogin
+```
+
+<ParamField body="projectKey" type="string" required>
+    The project key for the game.
+</ParamField>
+
+<ParamField body="playerId" type="string">
+    The player ID for an existing player. This parameter is optional and should
+    be used if you want to log in to an existing player account.
+</ParamField>
+
+### Response
+
+<ResponseField name="token" type="string" required>
+    Token that can be used to authenticate the player in future requests.
+</ResponseField>
+
+<ResponseField name="playerId" type="string" required>
+    The player ID for the authenticated player used to log in to the player.
+    account
+</ResponseField>
+
+### Example Response
+
+```json
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+    "playerId": "cm2s2i8n500000cml3tqr0ko9"
+}
+```
+
+## Steam Authentication
+
+Steam Authentication allows users to log in to the CrateBytes API using their Steam accounts. This method leverages Steam's secure authentication system to ensure that the player's identity is verified.
+
+<Warning>
+    You have to add your steam publisher key and steam appid in your project
+    settings
+</Warning>
+
+### Endpoint
+
+```http
+POST /api/steamlogin
+```
+
+<ParamField body="projectKey" type="string" required>
+    The project key for the game.
+</ParamField>
+
+<ParamField body="steamAuthTicket" type="string" required>
+    The Steam authentication ticket received from the Steam client.
+</ParamField>
+
+### Response
+
+<ResponseField name="token" type="string" required>
+    Token that can be used to authenticate the player in future requests.
+</ResponseField>
+
+<ResponseField name="playerId" type="string" required>
+    The player ID for the authenticated player.
+</ResponseField>
+
+### Example Response
+
+```json
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+    "playerId": "cm2s2i8n500000cml3tqr0ko9"
+}
+```

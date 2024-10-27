@@ -1,0 +1,82 @@
+---
+sidebarTitle: "Session"
+title: "Sessions"
+icon: "clock"
+description: "Manage player sessions with the CrateBytes API for tracking player activity and engagement."
+---
+
+## Start Session
+
+The `Start Session` endpoint is used to initiate a new game session for a player. This is essential for tracking player activity and engagement within the game. When a session is started, it allows the game to monitor the player's playtime.
+
+### Endpoint
+
+```http
+POST /api/game/session/start
+```
+
+<ParamField header="authorization header" type="string" required>
+    Bearer [token]
+</ParamField>
+
+### Example Response
+
+```json
+Session Started
+```
+
+```json
+Session already active
+```
+
+## Heartbeat
+
+The `Heartbeat` endpoint is used to keep an active game session alive. This is crucial for ensuring that the session does not expire due to inactivity. By sending periodic heartbeat requests, the game can maintain the session's active state and continue tracking the player's playtime. **A session will end after 10 minutes of inactivity, so it is recommended to send a heartbeat every 5 minutes.**
+
+### Endpoint
+
+```http
+POST /api/game/session/heartbeat
+```
+
+<ParamField header="authorization header" type="string" required>
+    Bearer [token]
+</ParamField>
+
+### Example Response
+
+```json
+Heartbeat updated
+```
+
+```json
+No active session found
+```
+
+```json
+Session has expired
+```
+
+## End Session
+
+The `End Session` endpoint is used to terminate an active game session for a player. This is important for accurately tracking the total playtime of the player. When a session is ended, it stops the tracking of the player's playtime and finalizes the session data.
+
+### Endpoint
+
+```http
+POST /api/game/session/end
+```
+
+<ParamField header="authorization header" type="string" required>
+    Bearer [token]
+</ParamField>
+
+### Example Response
+
+```json
+Session ended successfully
+```
+
+```json
+No active session found
+```

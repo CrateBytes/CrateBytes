@@ -1,0 +1,66 @@
+{
+    "$schema": "https://mintlify.com/schema.json",
+    "name": "CrateBytes",
+    "logo": {
+        "dark": "/favicon.png",
+        "light": "/favicon.png"
+    },
+    "favicon": "/favicon.png",
+    "colors": {
+        "primary": "#3a6df6",
+        "light": "#dce4f0",
+        "dark": "#1e1e2e",
+        "anchors": {
+            "from": "#3a6df6",
+            "to": "#f7faff"
+        }
+    },
+    "topbarCtaButton": {
+        "name": "Github",
+        "url": "https://github.com/CrateBytes/CrateBytes"
+    },
+    "anchors": [
+        {
+            "name": "Documentation",
+            "icon": "book-open-cover",
+            "url": "https://cratebytes.mintlify.app/docs"
+        },
+        {
+            "name": "Community",
+            "icon": "discord",
+            "url": "https://discord.gg/8aaK9sC27r"
+        },
+        {
+            "name": "Blog",
+            "icon": "newspaper",
+            "url": "https://CrateBytes.com/blog"
+        }
+    ],
+    "navigation": [
+        {
+            "group": "Getting Started",
+            "pages": ["getting-started/introduction"]
+        },
+        {
+            "group": "API Reference",
+            "pages": ["api-reference/overview"]
+        },
+        {
+            "group": "Game Authentication API",
+            "pages": ["api-reference/authentication"]
+        },
+        {
+            "group": "Game API",
+            "pages": [
+                "api-reference/game/session",
+                "api-reference/game/leaderboards",
+                "api-reference/game/metadata"
+            ]
+        }
+    ],
+    "footerSocials": {
+        "discord": "https://discord.gg/8aaK9sC27r",
+        "github": "https://github.com/CrateBytes/CrateBytes/",
+        "linkedin": "https://www.linkedin.com/company/cratebytes"
+    }
+}

@@ -100,7 +100,7 @@ export async function PUT({ locals, params, request }) {
         },
     });
 
-    return new Response(JSON.stringify(player), {
+    return new Response(JSON.stringify({ data: player.data }), {
         headers: {
             "Content-Type": "application/json",
         },
