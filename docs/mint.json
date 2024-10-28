@@ -21,11 +21,6 @@
     },
     "anchors": [
         {
-            "name": "Documentation",
-            "icon": "book-open-cover",
-            "url": "https://cratebytes.mintlify.app/docs"
-        },
-        {
             "name": "Community",
             "icon": "discord",
             "url": "https://discord.gg/8aaK9sC27r"

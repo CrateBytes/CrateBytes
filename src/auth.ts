@@ -14,6 +14,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "./prisma";
 import google from "@auth/sveltekit/providers/google";
 
+// @ts-ignore
 export const { handle, signIn, signOut } = SvelteKitAuth(function () {
     const authOptions = {
         adapter: PrismaAdapter(prisma),

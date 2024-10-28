@@ -12,13 +12,13 @@
     }[] = data.Days;
 
     const x = (d: {
-        day: number;
+        day: Date;
         count: number;
         averagePlayTime: number;
-    }) => d.day;
+    }) => d.day.getDate();
 
     const y = (d: {
-        day: number;
+        day: Date;
         count: number;
         averagePlayTime: number;
     }) => d.count;
@@ -99,6 +99,7 @@
                 <VisScatter {x} {y}/>
                 <VisTooltip {triggers} horizontalPlacement="left" verticalPlacement="bottom"/>
                 <VisAxis type="y"/>
+                <VisAxis type="x"/>
             </VisXYContainer>
         </section>
     </main>

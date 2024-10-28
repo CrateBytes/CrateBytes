@@ -45,7 +45,7 @@ export const load = (async ({ params, locals }) => {
 
     // Get player count and average play time for each day
     const Days: {
-        day: number;
+        day: Date;
         count: number;
         averagePlayTime: number;
     }[] = [];
@@ -66,9 +66,9 @@ export const load = (async ({ params, locals }) => {
                 }, 0) / count;
 
         Days.push({
-            day: i + 1,
+            day: date,
             count,
-            averagePlayTime,
+            averagePlayTime: isNaN(averagePlayTime) ? 0 : averagePlayTime,
         });
     }
 
