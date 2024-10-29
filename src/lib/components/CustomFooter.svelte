@@ -13,7 +13,7 @@
         <a href="https://www.linkedin.com/company/cratebytes" target="_blank" rel="noopener noreferrer" class="mx-2 text-white hover:underline">
             <Icon icon="mdi:linkedin" class="inline-block w-6 h-6" />
         </a>
-        <a href="https://discord.gg/8aaK9sC27r" target="_blank" rel="noopener noreferrer" class="mx-2 text-white hover:underline">
+        <a href="https://discord.gg/UP4kzXZ66g" target="_blank" rel="noopener noreferrer" class="mx-2 text-white hover:underline">
             <Icon icon="mdi:discord" class="inline-block w-6 h-6" />
         </a>
         <a href="{$page.url.origin}/rss.xml" target="_blank" rel="noopener noreferrer" class="mx-2 text-white hover:underline">

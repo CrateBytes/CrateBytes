@@ -1,7 +1,7 @@
 <h1 align="center">
     <img align="center" alt="CrateBytes" src="assets/logo.jpg" style="width:100%;" />
 </h1>
-<p align="center"><img src="https://img.shields.io/discord/1080155652829225071?style=for-the-badge" alt="shields"> <img src='https://img.shields.io/badge/license-MIT-green?style=for-the-badge' /></p>
+<p align="center"><img src="https://img.shields.io/discord/1300780575770021978?style=for-the-badge" alt="shields"> <img src='https://img.shields.io/badge/license-MIT-green?style=for-the-badge' /></p>
 
 <h2 id="bytecrates">🚀 CrateBytes is the ultimate open-source backend solution for games</h2>
 
@@ -39,7 +39,7 @@ npm run dev
 ```
 
 <h2 id="contributions">🤝 Contributions</h2>
-We welcome contributions big or small in different directions. The best way to do this is to talk to us on our <a href="https://discord.gg/8aaK9sC27r">Discord Server.</a> 💬
+We welcome contributions big or small in different directions. The best way to do this is to talk to us on our <a href="https://discord.gg/UP4kzXZ66g">Discord Server.</a> 💬
 
 <h2 id="open-source">🛠️ Open-source</h2> 
 This repo is entirely <a href="/LICENSE">MIT licensed</a>. You have the permission to use or distribute our source code freely in your projects. 🎉

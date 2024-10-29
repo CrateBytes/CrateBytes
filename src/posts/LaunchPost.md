@@ -25,7 +25,7 @@ CrateBytes boasts a robust array of features tailored to meet the demands of mod
 
 -   **📊 Game Analytics**: Gain valuable insights into player behavior and game performance, helping you make data-driven decisions.
 -   **🏆 Leaderboards**: Foster competition among players with dynamic leaderboards that keep them engaged.
--   **🎮 Steam & Guest Login**: Offer easy login options to enhance player accessibility and streamline their experience.
+-   **🎮 Seamless Player authentication**: Offer easy login options to enhance player accessibility and streamline their experience.
 -   **🗂️ Player Metadata**: Efficiently store and manage player-specific data for personalized gaming experiences.
 
 ## 🎉 Get Started for Free

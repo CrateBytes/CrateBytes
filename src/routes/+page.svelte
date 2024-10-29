@@ -21,7 +21,7 @@
         },
         {
             icon: '🎮',
-            title: 'Seamless Steam & Guest Login',
+            title: 'Seamless Player authentication',
             description: 'Provide players with a hassle-free login experience via Steam integration or guest access, ensuring convenience and security.'
         },
         {
