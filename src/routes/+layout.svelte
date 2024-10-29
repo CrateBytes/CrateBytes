@@ -1,1 +1,8 @@
-<script>import "../app.css";</script><slot></slot>
+<script>
+    import Analytics from "$lib/components/Analytics.svelte";
+    import "../app.css";
+</script>
+
+<Analytics />
+
+<slot/>

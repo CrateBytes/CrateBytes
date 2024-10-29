@@ -79,9 +79,9 @@
                         </a>
                     </Card.Content>
                     <Card.Footer>
-                        <p>{post.author}</p>
+                        <p class="text-sm">{post.author}</p>
                         <p class="text-2xl font-bold mx-2">·</p>
-                        <p>{new Date(post.date).toLocaleDateString(undefined, {
+                        <p class="text-sm">{new Date(post.date).toLocaleDateString(undefined, {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric',

@@ -46,7 +46,7 @@
             description: 'Ideal for large-scale projects and businesses.',
             features: ['Advanced moderation', 'Custom integrations', '24/7 support'],
             buttonText: 'Contact Sales',
-            link: "#"
+            link: "mailto:sales@cratebytes.com"
         },
         {
             title: 'Self-Hosted',

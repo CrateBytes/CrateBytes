@@ -1,6 +1,15 @@
+import "dotenv/config";
+
 import { SvelteKitAuth } from "@auth/sveltekit";
 import GitHub from "@auth/sveltekit/providers/github";
-import {
+import { env } from "$env/dynamic/private";
+import discord from "@auth/sveltekit/providers/discord";
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import { prisma } from "./prisma";
+import google from "@auth/sveltekit/providers/google";
+import { dev } from "$app/environment";
+
+const {
     GITHUB_CLIENT_ID,
     GITHUB_CLIENT_SECRET,
     DISCORD_CLIENT_ID,
@@ -8,11 +17,7 @@ import {
     GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET,
     AUTH_SECRET,
-} from "$env/static/private";
-import discord from "@auth/sveltekit/providers/discord";
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import { prisma } from "./prisma";
-import google from "@auth/sveltekit/providers/google";
+} = dev ? env : process.env;
 
 // @ts-ignore
 export const { handle, signIn, signOut } = SvelteKitAuth(function () {

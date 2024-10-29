@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken";
-import { JWT_SECRET } from "$env/static/private";
+import { env } from "$env/dynamic/private";
+
+const { JWT_SECRET } = env;
 
 export const GenerateToken = (payload: object) => {
     return jwt.sign(payload, JWT_SECRET, { expiresIn: "24h" });

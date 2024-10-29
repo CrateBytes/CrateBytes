@@ -21,5 +21,9 @@
         </a>
     </div>
     <p>Built by game developers, for game developers.</p>
-    <p>&copy; {new Date().getFullYear()} CrateBytes. All rights reserved.</p>
+    <div class="flex justify-center items-center">
+        <p>&copy; {new Date().getFullYear()} CrateBytes. All rights reserved.</p>
+        <p class="text-2xl font-bold mx-2">·</p> 
+        <a href="/privacy" class="underline">Privacy Policy</a>
+    </div>
 </footer>

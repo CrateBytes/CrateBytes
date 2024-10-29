@@ -3,7 +3,7 @@
     import Icon from "@iconify/svelte";
 </script>
 
-<a href="https://cratebytes.mintlify.app/">
+<a href="https://docs.cratebytes.com/">
     <Card.Root class="relative rounded-lg shadow-md cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-[1.01]">
         <Card.Header>
             <Icon icon="fluent:book-20-filled" width="48" />
