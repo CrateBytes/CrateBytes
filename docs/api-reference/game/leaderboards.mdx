@@ -15,11 +15,11 @@ The `Submit Score` endpoint allows you to submit a player's score to a specific 
 POST /api/game/leaderboards/[leaderboard id]/submit
 ```
 
-<ParamField body="score" type="string" required>
+<ParamField body="score (body)" type="string" required>
     The score to submit to the leaderboard. must be passed in the request body.
 </ParamField>
 
-<ParamField header="authorization header" type="string" required>
+<ParamField header="authorization (header)" type="string" required>
     Bearer [token]
 </ParamField>
 

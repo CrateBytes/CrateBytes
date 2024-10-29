@@ -15,7 +15,7 @@ The `Start Session` endpoint is used to initiate a new game session for a player
 POST /api/game/session/start
 ```
 
-<ParamField header="authorization header" type="string" required>
+<ParamField header="authorization (header)" type="string" required>
     Bearer [token]
 </ParamField>
 
@@ -39,7 +39,7 @@ The `Heartbeat` endpoint is used to keep an active game session alive. This is c
 POST /api/game/session/heartbeat
 ```
 
-<ParamField header="authorization header" type="string" required>
+<ParamField header="authorization (header)" type="string" required>
     Bearer [token]
 </ParamField>
 
@@ -67,7 +67,7 @@ The `End Session` endpoint is used to terminate an active game session for a pla
 POST /api/game/session/end
 ```
 
-<ParamField header="authorization header" type="string" required>
+<ParamField header="authorization (header)" type="string" required>
     Bearer [token]
 </ParamField>
 

@@ -16,11 +16,11 @@ This method provides a seamless way for new users to get started while still ens
 POST /api/guestlogin
 ```
 
-<ParamField body="projectKey" type="string" required>
+<ParamField body="projectKey (body)" type="string" required>
     The project key for the game.
 </ParamField>
 
-<ParamField body="playerId" type="string">
+<ParamField body="playerId (body)" type="string">
     The player ID for an existing player. This parameter is optional and should
     be used if you want to log in to an existing player account.
 </ParamField>
@@ -60,11 +60,11 @@ Steam Authentication allows users to log in to the CrateBytes API using their St
 POST /api/steamlogin
 ```
 
-<ParamField body="projectKey" type="string" required>
+<ParamField body="projectKey (body)" type="string" required>
     The project key for the game.
 </ParamField>
 
-<ParamField body="steamAuthTicket" type="string" required>
+<ParamField body="steamAuthTicket (body)" type="string" required>
     The Steam authentication ticket received from the Steam client.
 </ParamField>
 

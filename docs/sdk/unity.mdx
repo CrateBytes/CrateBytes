@@ -1,0 +1,240 @@
+---
+sidebarTitle: "Unity SDK"
+title: "Unity SDK"
+icon: "unity"
+description: "Learn about the CrateBytes Unity SDK and how to use it."
+---
+
+# CrateBytes Unity SDK
+
+The CrateBytes Unity SDK provides a set of tools for implementing player authentication, session management, leaderboards, and metadata management in your Unity game. This document guides you through setup and usage of key features.
+
+## Installation
+
+1. **Download the SDK**: Visit the [CrateBytes Unity SDK releases page](https://github.com/CrateBytes/CrateBytes-UnitySDK/releases/) to download the latest `.unitypackage` file.
+2. **Import the SDK**: In Unity, go to `Assets > Import Package > Custom Package`, then select the downloaded `.unitypackage` file to import.
+3. **Add the Prefab**: Add the `CrateBytesManager` prefab to your scene to enable SDK functionality.
+
+## Initial Setup
+
+1. **Configure Project Key**: Retrieve your Project Key from the CrateBytes Project Dashboard under **Settings > API Keys**. Add this Project Key to the `CrateBytesManager` component in your Unity scene.
+2. **Add Namespace**: To use the SDK functions in your scripts, add:
+
+    ```csharp
+    using CrateBytes;
+    ```
+
+3. **Initialize API Calls**: Use the following syntax to call SDK functions:
+    ```csharp
+    CrateBytesManager.instance.<function>();
+    ```
+
+## Authentication
+
+### Guest Login
+
+Logs in a player as a guest.
+
+```csharp
+public void GuestLogin(string playerId = "", System.Action<GuestLoginResponse> callback = null)
+```
+
+**Parameters**
+
+-   `playerId` _(optional)_: A unique identifier for the player.
+-   `callback`: Action to handle the `GuestLoginResponse`.
+
+**Example**
+
+```csharp
+CrateBytesManager.instance.GuestLogin(<PLAYERID OR "">, (GuestLoginResponse res) => {
+    Debug.Log("Authenticated as a guest with id of " + res.playerId);
+});
+```
+
+### Steam Login
+
+Logs in a player using a Steam authentication ticket.
+
+```csharp
+public void SteamLogin(string steamAuthTicket, System.Action<SteamLoginResponse> callback = null)
+```
+
+**Parameters**
+
+-   `steamAuthTicket`: The player's Steam authentication ticket obtained from Steamworks SDK.
+-   `callback`: Action to handle the `SteamLoginResponse`.
+
+**Example**
+
+```csharp
+CrateBytesManager.instance.SteamLogin(steamAuthTicket, (SteamLoginResponse res) => {
+    Debug.Log("Authenticated as a guest with id of " + res.playerId);
+});
+```
+
+## Sessions
+
+### Start Session
+
+Starts a new session for the player.
+
+```csharp
+public void StartSession(System.Action<string> callback = null)
+```
+
+**Parameters**
+
+-   `callback`: Action called after the session starts.
+
+**Example**
+
+```csharp
+CrateBytesManager.instance.StartSession(response => {
+    Debug.Log("Session started");
+});
+```
+
+### Heartbeat Session
+
+Sends a heartbeat to keep the session active.
+
+```csharp
+public void HeartbeatSession(System.Action<string> callback = null)
+```
+
+**Example**
+
+```csharp
+CrateBytesManager.instance.HeartbeatSession(response => {
+    Debug.Log("Session heartbeat");
+});
+```
+
+### End Session
+
+Ends the current session.
+
+```csharp
+public void EndSession(System.Action<string> callback = null)
+```
+
+**Example**
+
+```csharp
+CrateBytesManager.instance.EndSession(response => {
+    Debug.Log("Session ended");
+});
+```
+
+## Leaderboards
+
+### Submit Score to Leaderboard
+
+Submits a score to a specified leaderboard.
+
+```csharp
+public void SubmitScoreToLeaderboard(string leaderboardId, int score, System.Action<string> callback = null)
+```
+
+**Parameters**
+
+-   `leaderboardId`: The ID of the leaderboard.
+-   `score`: The player's score.
+-   `callback`: Action called after the score is submitted.
+
+**Example**
+
+```csharp
+CrateBytesManager.instance.SubmitScoreToLeaderboard(leaderboardId, score, (string res) => {
+    Debug.Log("Score submitted");
+});
+```
+
+### Get Leaderboard
+
+Retrieves leaderboard data for a specific leaderboard ID.
+
+```csharp
+public void GetLeaderboard(string leaderboardId, int page = 0, System.Action<LeaderboardResponse> callback = null)
+```
+
+**Parameters**
+
+-   `leaderboardId`: The ID of the leaderboard.
+-   `page` _(optional)_: The page number for leaderboard pagination.
+-   `callback`: Action to handle the `LeaderboardResponse`.
+
+**Example**
+
+```csharp
+CrateBytesManager.instance.GetLeaderboard(leaderboardId, page, (LeaderboardResponse res) => {
+    Debug.Log("Leaderboard:");
+    foreach (LeaderboardEntry entry in res.entries) {
+        Debug.Log($"Player [{entry.player.playerId}] has a score of {entry.score}");
+    }
+});
+```
+
+## Metadata
+
+### Get Metadata
+
+Retrieves metadata information.
+
+```csharp
+public void GetMetadata(System.Action<GetMetadataResponse> callback = null)
+```
+
+**Example**
+
+```csharp
+CrateBytesManager.instance.GetMetadata(metadata => {
+    Debug.Log("Metadata retrieved: " + metadata.data);
+});
+```
+
+### Add/Update Metadata
+
+Adds or updates metadata for the game.
+
+```csharp
+public void AddUpdateMetadata(string data, System.Action<AddUpdateMetadataResponse> callback = null)
+```
+
+**Parameters**
+
+-   `data`: The metadata to add or update.
+-   `callback`: Action to call after the metadata is updated.
+
+**Example**
+
+```csharp
+CrateBytesManager.instance.AddUpdateMetadata("new metadata", response => {
+    Debug.Log("Metadata updated: " + response.success);
+});
+```
+
+### Delete Metadata
+
+Deletes the specified metadata.
+
+```csharp
+public void DeleteMetadata(System.Action<string> callback = null)
+```
+
+**Example**
+
+```csharp
+CrateBytesManager.instance.DeleteMetadata(response => {
+    Debug.Log("Metadata deleted: " + response);
+});
+```
+
+## Additional Notes
+
+-   **Prefab Requirement**: Ensure the `CrateBytesManager` prefab is added to your scene.
+-   **Project Key**: Retrieve your Project Key from the CrateBytes Dashboard for authentication setup.
+-   **Callbacks**: Always check the responses from callbacks to verify operation success.
+
+For further support, create an issue at [CrateBytes SDK GitHub Repository](https://github.com/CrateBytes/CrateBytes-UnitySDK).

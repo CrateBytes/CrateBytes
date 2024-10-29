@@ -13,7 +13,7 @@ description: "Store and retrieve player metadata with the CrateBytes API."
 GET /api/game/metadata/get
 ```
 
-<ParamField header="authorization header" type="string" required>
+<ParamField header="authorization (header)" type="string" required>
     Bearer [token]
 </ParamField>
 
@@ -33,11 +33,11 @@ GET /api/game/metadata/get
 PUT /api/game/metadata/add
 ```
 
-<ParamField header="authorization header" type="string" required>
+<ParamField header="authorization (header)" type="string" required>
     Bearer [token]
 </ParamField>
 
-<ParamField body="data" type="string" required>
+<ParamField body="data (body)" type="string" required>
     The metadata to store or update. must be 1000 characters or less.
 </ParamField>
 
@@ -57,6 +57,6 @@ PUT /api/game/metadata/add
 DELETE /api/game/metadata/delete
 ```
 
-<ParamField header="authorization header" type="string" required>
+<ParamField header="authorization (header)" type="string" required>
     Bearer [token]
 </ParamField>

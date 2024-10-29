@@ -37,6 +37,10 @@
             "pages": ["getting-started/introduction"]
         },
         {
+            "group": "SDK",
+            "pages": ["sdk/overview", "sdk/unity"]
+        },
+        {
             "group": "API Reference",
             "pages": ["api-reference/overview"]
         },
