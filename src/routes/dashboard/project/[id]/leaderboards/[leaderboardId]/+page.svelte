@@ -99,6 +99,10 @@
     let ShowCustomDataDialogTrigger = false;
 </script>
 
+<svelte:head>
+    <title>CrateBytes - {data.leaderboard.name}</title>
+</svelte:head>
+
 <NewNavbar id={data.project.id} />
 
 <AlertDialog.Root open={DeleteLeaderboardEntryDialogTrigger} onOpenChange={(open) => {

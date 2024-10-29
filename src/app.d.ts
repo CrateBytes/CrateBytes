@@ -12,6 +12,7 @@ declare global {
         interface Post {
             title: string;
             description: string;
+            tags: string;
             author: string;
             thumbnail: string;
             date: string;

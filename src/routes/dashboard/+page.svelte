@@ -96,6 +96,10 @@
     let DeleteProjectDialogTrigger: boolean = false;
 </script>
 
+<svelte:head>
+    <title>CrateBytes - Dashboard</title>
+</svelte:head>
+
 <NewNavbar />
 <div class="relative">
 

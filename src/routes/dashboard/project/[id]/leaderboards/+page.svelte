@@ -74,6 +74,10 @@
     let DeleteLeaderboardDialogTrigger = false;
 </script>
 
+<svelte:head>
+    <title>CrateBytes - {data.project.name} leaderboards</title>
+</svelte:head>
+
 <NewNavbar id={data.project.id} />
 
 <!-- #region Create Leaderboard -->

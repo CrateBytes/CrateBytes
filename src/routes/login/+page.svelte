@@ -7,6 +7,10 @@
 
 </script>
 
+<svelte:head>
+    <title>CrateBytes Login</title>
+</svelte:head>
+
 <NewNavbar />
 <div class="relative h-screen">
 

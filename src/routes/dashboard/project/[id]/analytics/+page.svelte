@@ -40,6 +40,10 @@
     }
 </script>
 
+<svelte:head>
+    <title>CrateBytes - {data.project.name} Analytics</title>
+</svelte:head>
+
 <NewNavbar id={data.project.id} />
 <div class="md:ml-16">
     <main class="flex flex-col bg-background gap-4 h-full mx-8 mb-8">

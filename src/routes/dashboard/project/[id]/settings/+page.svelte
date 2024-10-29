@@ -30,8 +30,11 @@
 
 </script>
 
-<NewNavbar id={data.project.id}/>
+<svelte:head>
+    <title>CrateBytes - {data.project.name} Settings</title>
+</svelte:head>
 
+<NewNavbar id={data.project.id}/>
 <div class="md:ml-16">
     
     <main class="flex flex-row bg-background gap-4 min-h-full">

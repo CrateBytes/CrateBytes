@@ -38,6 +38,12 @@
     });
 </script>
 
+<svelte:head>
+    <title>CrateBytes - Blog</title>
+    <meta name="description" content="Explore CrateBytes' blog for expert insights on game development, programming tips, and the latest news in the gaming industry. Join us!" />
+    <meta name="keywords" content="game development, programming, CrateBytes news, gaming industry insights, programming tutorials" />
+</svelte:head>
+
 <NewNavbar />
 <main class="flex flex-col bg-background gap-4 mb-10">
     <section class="flex flex-col gap-4 w-full mt-8 items-center">

@@ -5,6 +5,10 @@
 
 </script>
 
+<svelte:head>
+    <title>CrateBytes - {data.project.name}</title>
+</svelte:head>
+
 <NewNavbar id={data.project.id} />
 <div class="md:ml-16">
     <main class="flex flex-row bg-background gap-4 h-full">

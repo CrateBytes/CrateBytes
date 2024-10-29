@@ -12,6 +12,7 @@
 <svelte:head>
     <title>{data.meta.title}</title>
     <meta name="description" content={data.meta.description} />
+    <meta name="tags" content={data.meta.categories.join(", ")} />
     <meta name="author" content={data.meta.author} />
     <meta property="og:type" content="article" />
     <meta property="og:title" content={data.meta.title} />

@@ -1,8 +1,9 @@
 ---
 title: "Introducing CrateBytes: Your Open-Source, Self-Hosted Backend Solution for Games"
 description: "Welcome to CrateBytes! we introduce CrateBytes, an open-source, self-hosted backend solution for games"
+tags: "CrateBytes, Open Source, Game Development, Backend Solutions, Self-Hosted, Game Analytics, Indie Games, Developer Tools, Gaming Community, API Integration"
 author: "Abdallah Alwarawreh"
-thumbnail: "/blog/LaunchPost.webp"
+thumbnail: "/blog/launch-post.webp"
 date: "2024-oct-27"
 categories:
     - annoucement
