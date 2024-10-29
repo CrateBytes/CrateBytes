@@ -7,6 +7,8 @@
     import * as Card from "$lib/components/ui/card";
     import Separator from "$lib/components/ui/separator/separator.svelte";
     import CustomFooter from "$lib/components/CustomFooter.svelte";
+    import Icon from "@iconify/svelte";
+    import Resources from "$lib/components/Resources.svelte";
 
     let features = [
         {
@@ -49,7 +51,7 @@
         {
             title: 'Self-Hosted',
             description: 'Full control with self-hosted solutions.',
-            features: ['Customizable', 'Full Data Ownership', 'Custom integrations', 'Community Support'],
+            features: ['Customizable', 'Custom integrations', 'Community Support'],
             buttonText: 'Get Source Code',
             link: "https://github.com/CrateBytes/CrateBytes/"
         }
@@ -101,7 +103,7 @@
             <h2 class="text-2xl lg:text-4xl font-bold text-center mb-12">Features</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {#each features as feature}
-                    <Card.Root class="rounded-lg shadow-md">
+                    <Card.Root class="rounded-lg shadow-md transition-transform duration-300 ease-in-out transform hover:scale-[1.01]">
                         <Card.Header>
                             <span class="text-4xl mb-4">{feature.icon}</span>
                             <Card.Title class="text-xl font-semibold mb-4">{feature.title}</Card.Title>
@@ -117,16 +119,21 @@
 
     <!-- Blogs & Docs -->
     <section class="my-32">
-
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl lg:text-4xl font-bold text-center mb-12">Resources</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <Resources />
+            </div>
+        </div>
     </section>
 
     <!-- Pricing -->
     <section class="my-32">
         <div class="container mx-auto px-4">
-            <h2 class="text-2xl lg:text-4xl font-bold text-center mb-12">Pricing Plans</h2>
+            <h2 class="text-2xl lg:text-4xl font-bold text-center mb-12">Pricing</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {#each plans as plan}
-                    <Card.Root class="rounded-lg shadow-md">
+                    <Card.Root class="rounded-lg shadow-md transition-transform duration-300 ease-in-out transform hover:scale-[1.01]">
                         <Card.Header>
                             <Card.Title class="text-xl font-semibold mb-4">{plan.title}</Card.Title>
                         </Card.Header>

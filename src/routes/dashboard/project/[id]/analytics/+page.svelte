@@ -11,19 +11,31 @@
         averagePlayTime: number;
     }[] = data.Days;
 
-    const x = (d: {
+    const playerCountX = (d: {
         day: Date;
         count: number;
         averagePlayTime: number;
     }) => d.day.getDate();
 
-    const y = (d: {
+    const playerCountY = (d: {
         day: Date;
         count: number;
         averagePlayTime: number;
     }) => d.count;
 
-    const triggers = {
+    const averageSessionTimeX = (d: {
+        day: Date;
+        count: number;
+        averagePlayTime: number;
+    }) => d.day.getDate();
+
+    const averageSessionTimeY = (d: {
+        day: Date;
+        count: number;
+        averagePlayTime: number;
+    }) => d.averagePlayTime;
+
+    const playerCountTriggers = {
         [Scatter.selectors.point]: (d: {
             day: number;
             count: number;
@@ -95,13 +107,26 @@
         </section>
 
         <section class="w-full flex flex-col gap-4 border rounded-md p-4 md:p-8">
-            <h2 class="text-2xl font-bold text-center">
+            <h2 class="text-2xl font-bold text-center mb-4">
                 Player Count past week
             </h2>
             <VisXYContainer data={chartData}>
-                <VisLine {x} {y}/>
-                <VisScatter {x} {y}/>
-                <VisTooltip {triggers} horizontalPlacement="left" verticalPlacement="bottom"/>
+                <VisLine x={playerCountX} y={playerCountY}/>
+                <VisScatter x={playerCountX} y={playerCountY}/>
+                <VisTooltip triggers={playerCountTriggers} horizontalPlacement="left" verticalPlacement="bottom"/>
+                <VisAxis type="y"/>
+                <VisAxis type="x"/>
+            </VisXYContainer>
+        </section>
+
+        <section class="w-full flex flex-col gap-4 border rounded-md p-4 md:p-8">
+            <h2 class="text-2xl font-bold text-center mb-4">
+                Average Session Time past week
+            </h2>
+            <VisXYContainer data={chartData}>
+                <VisLine x={averageSessionTimeX} y={averageSessionTimeY}/>
+                <VisScatter x={averageSessionTimeX} y={averageSessionTimeY}/>
+                <VisTooltip triggers={playerCountTriggers} horizontalPlacement="left" verticalPlacement="bottom"/>
                 <VisAxis type="y"/>
                 <VisAxis type="x"/>
             </VisXYContainer>

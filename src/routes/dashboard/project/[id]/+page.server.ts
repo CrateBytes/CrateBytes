@@ -2,7 +2,7 @@ import { redirect } from "@sveltejs/kit";
 import { prisma } from "../../../../prisma";
 import type { PageServerLoad } from "./$types";
 
-export const load = (async ({ params, locals }) => {
+export const load = (async ({ params, locals, url }) => {
     const session = await locals.auth();
 
     if (!session) {
@@ -27,15 +27,17 @@ export const load = (async ({ params, locals }) => {
         throw redirect(302, "/dashboard");
     }
 
-    return {
-        project: {
-            id: project.id,
-            name: project.name,
-            description: project.description,
-        },
-        owner: {
-            name: project.owner.name,
-            image: project.owner.image,
-        },
-    };
+    redirect(302, url.href + "/analytics");
+
+    // return {
+    //     project: {
+    //         id: project.id,
+    //         name: project.name,
+    //         description: project.description,
+    //     },
+    //     owner: {
+    //         name: project.owner.name,
+    //         image: project.owner.image,
+    //     },
+    // };
 }) satisfies PageServerLoad;

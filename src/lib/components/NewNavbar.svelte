@@ -15,7 +15,7 @@
     export let id: string | undefined = undefined;
 
     const tabs = [
-        { name: "Home", href: `/dashboard/project/${id}`, icon: "mdi:home" },
+        // { name: "Home", href: `/dashboard/project/${id}`, icon: "mdi:home" },
         { name: "Analytics", href: `/dashboard/project/${id}/analytics`, icon: "mdi:analytics" },
         { name: "Leaderboards", href: `/dashboard/project/${id}/leaderboards` , icon: "mdi:medal"},
         { name: "Settings", href: `/dashboard/project/${id}/settings`, icon: "mdi:settings" },

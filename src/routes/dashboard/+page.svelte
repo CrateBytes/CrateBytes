@@ -1,4 +1,6 @@
 <script lang="ts">
+    import Resources from '$lib/components/Resources.svelte';
+
     import * as Table from "$lib/components/ui/table";
     import * as Card from "$lib/components/ui/card/index.js";
     import * as Avatar from "$lib/components/ui/avatar/index.js";
@@ -181,7 +183,7 @@
     </Dialog.Root>
     <!-- #endregion -->
     
-    <main class="flex flex-col md:flex-row bg-background gap-16 h-full m-5 sm:m-10">
+    <main class="flex flex-col lg:flex-row bg-background gap-16 h-full m-5 sm:m-10">
         <div class="flex flex-col gap-8 md:flex-[2] w-full">
             <Card.Root class="w-full lg:w-1/2">
                 <Card.Content class="flex flex-row gap-4 items-center">
@@ -253,6 +255,13 @@
                     </Table.Body>
                 </Table.Root>
             </section>
+        
+            <section class="flex flex-col">
+                <span class="text-accent-foreground text-2xl font-bold pb-5"> Resources </span>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <Resources />
+                </div>
+            </section>
         </div>
 
         <div class="flex flex-row gap-8 md:flex-1 w-full">
@@ -262,14 +271,14 @@
                 </Card.Header>
                 <Card.Content class="flex flex-col gap-4">
                     {#each data.News as News}
-                    <div class="flex flex-row items-center gap-2 cursor-pointer">
-                        <div class="flex flex-col">
-                            <a href="/blog/{News.slug}"><span class="text-md font-bold hover:underline">{News.title}</span></a>
-                            <span class="text-muted-foreground text-sm h-10 overflow-hidden line-clamp-2">{News.description}</span>
-                        </div>
+                        <div class="flex flex-col-reverse min-[450px]:flex-row items-center gap-2 cursor-pointer">
+                            <div class="flex flex-col">
+                                <a href="/blog/{News.slug}"><span class="text-md font-bold hover:underline">{News.title}</span></a>
+                                <span class="text-muted-foreground text-sm h-10 overflow-hidden line-clamp-2">{News.description}</span>
+                            </div>
 
-                        <img src={News.thumbnail} alt={News.title} class="max-w-30 max-h-20 object-cover" />
-                    </div>
+                            <img src={News.thumbnail} alt={News.title} class="min-[450px]:max-w-30 min-[450px]:max-h-20 object-cover" />
+                        </div>
                         <Separator />
                     {/each}
                 </Card.Content>
