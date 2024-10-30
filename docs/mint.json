@@ -15,9 +15,12 @@
             "to": "#f7faff"
         }
     },
+    "topbarLinks": [
+        { "name": "Github", "url": "https://github.com/CrateBytes/CrateBytes" }
+    ],
     "topbarCtaButton": {
-        "name": "Github",
-        "url": "https://github.com/CrateBytes/CrateBytes"
+        "name": "Get Started",
+        "url": "https://cratebytes.com"
     },
     "anchors": [
         {
@@ -57,9 +60,20 @@
             ]
         }
     ],
+    "analytics": {
+        "ga4": {
+            "measurementId": "G-C0WN39CHXV"
+        }
+    },
     "footerSocials": {
-        "discord": "https://discord.gg/UP4kzXZ66g",
+        "website": "https://cratebytes.com",
         "github": "https://github.com/CrateBytes/CrateBytes/",
-        "linkedin": "https://www.linkedin.com/company/cratebytes"
+        "discord": "https://discord.gg/UP4kzXZ66g",
+        "linkedin": "https://www.linkedin.com/company/cratebytes",
+        "x": "https://x.com/cratebytes"
+    },
+    "feedback": {
+        "suggestEdit": true,
+        "raiseIssue": true
     }
 }
