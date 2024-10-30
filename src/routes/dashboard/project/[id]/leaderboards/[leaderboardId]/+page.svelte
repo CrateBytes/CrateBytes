@@ -23,7 +23,7 @@
     export let data;
 
     type LeaderboardEntry = {
-        PlayerCustomData: {
+        entryData: {
             data: string;
         };
         playerId: string;
@@ -42,10 +42,11 @@
         isFetching = true;
         const res = await fetch(`/api/leaderboards/${data.leaderboard.id}?page=${page}`);
         const json = await res.json();
+        const resData = json.data;
 
-        LeaderboardEntries = json.entries.map((entry: {
+        LeaderboardEntries = resData.entries.map((entry: {
             player: {
-                PlayerCustomData: { data: string; }[];
+                entryData: { data: string; }[];
                 playerId: string;
                 guest: boolean;
             };
@@ -54,11 +55,11 @@
             playerId: entry.player.playerId,
             score: entry.score,
             guest: entry.player.guest,
-            PlayerCustomData: entry.player.PlayerCustomData,
+            entryData: entry.player.entryData,
         }));
 
-        totalPages = json.pages;
-        totalEntries = json.totalEntries;
+        totalPages = resData.pages;
+        totalEntries = resData.totalEntries;
         currentPageNumber = page;
         isFetching = false;
     }
@@ -150,7 +151,7 @@
             <AlertDialog.Title>Custom Data of {customDataToShow.playerId}</AlertDialog.Title>
             <AlertDialog.Description>
                 <div class="custom-data-item">
-                    <pre class="bg-muted p-2 rounded-md">{JSON.stringify(customDataToShow.PlayerCustomData, null, 2)}</pre>
+                    <pre class="bg-muted p-2 rounded-md">{JSON.stringify(customDataToShow.entryData, null, 2)}</pre>
                 </div>
             </AlertDialog.Description>
         </AlertDialog.Header>

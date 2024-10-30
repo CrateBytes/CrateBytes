@@ -51,11 +51,11 @@ export async function GET({ locals, params, request }) {
     if (!player) {
         return new Response(
             JSON.stringify({
-                status: 404,
-                error: "Player custom data not found",
+                status: 200,
+                error: "",
                 data: { data: "" }, // Explicitly returning an empty string for data
             }),
-            { status: 404 }
+            { status: 200 }
         );
     }
 
