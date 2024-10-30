@@ -12,7 +12,7 @@ The `Start Session` endpoint is used to initiate a new game session for a player
 ### Endpoint
 
 ```http
-POST /api/game/session/start
+POST https://cratebytes.com/api/game/gameplay/start
 ```
 
 <ParamField header="authorization (header)" type="string" required>
@@ -22,11 +22,19 @@ POST /api/game/session/start
 ### Example Response
 
 ```json
-Session Started
+{
+    "status": 201,
+    "error": null,
+    "data": { "message": "Session Started" }
+}
 ```
 
 ```json
-Session already active
+{
+    "status": 400,
+    "error": "Session already active",
+    "data": {}
+}
 ```
 
 ## Heartbeat
@@ -36,7 +44,7 @@ The `Heartbeat` endpoint is used to keep an active game session alive. This is c
 ### Endpoint
 
 ```http
-POST /api/game/session/heartbeat
+POST https://cratebytes.com/api/game/gameplay/heartbeat
 ```
 
 <ParamField header="authorization (header)" type="string" required>
@@ -46,15 +54,27 @@ POST /api/game/session/heartbeat
 ### Example Response
 
 ```json
-Heartbeat updated
+{
+    "status": 200,
+    "error": null,
+    "data": { "message": "Heartbeat" }
+}
 ```
 
 ```json
-No active session found
+{
+    "status": 403,
+    "error": "Session has expired",
+    "data": {}
+}
 ```
 
 ```json
-Session has expired
+{
+    "status": 404,
+    "error": "No active session found",
+    "data": {}
+}
 ```
 
 ## End Session
@@ -64,7 +84,7 @@ The `End Session` endpoint is used to terminate an active game session for a pla
 ### Endpoint
 
 ```http
-POST /api/game/session/end
+POST https://cratebytes.com/api/game/gameplay/end
 ```
 
 <ParamField header="authorization (header)" type="string" required>
@@ -74,9 +94,20 @@ POST /api/game/session/end
 ### Example Response
 
 ```json
-Session ended successfully
+{
+    "status": 200,
+    "error": null,
+    "data": {
+        "message": "Session ended successfully",
+        "sessionDuration": 325 // in seconds
+    }
+}
 ```
 
 ```json
-No active session found
+{
+    "status": 404,
+    "error": "No active session found",
+    "data": {}
+}
 ```

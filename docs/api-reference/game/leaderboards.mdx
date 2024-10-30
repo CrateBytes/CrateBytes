@@ -12,7 +12,7 @@ The `Submit Score` endpoint allows you to submit a player's score to a specific 
 ### Endpoint
 
 ```http
-POST /api/game/leaderboards/[leaderboard id]/submit
+POST https://cratebytes.com/api/game/leaderboards/[leaderboard id]/submit
 ```
 
 <ParamField body="score (body)" type="string" required>
@@ -26,7 +26,11 @@ POST /api/game/leaderboards/[leaderboard id]/submit
 ### Example Response
 
 ```json
-Score submitted
+{
+    "status": 200,
+    "error": null,
+    "data": { "message": "Score submitted" }
+}
 ```
 
 ## Get leaderboard data
@@ -36,36 +40,38 @@ The `Get Leaderboard Data` endpoint allows you to retrieve the data for a specif
 ### Endpoint
 
 ```http
-GET /api/leaderboards/[leaderboard id]?page=[page number]
+GET https://cratebytes.com/api/leaderboards/[leaderboard id]?page=[page number]
 ```
 
 ### Example Response
 
 ```json
 {
-  "leaderboard": {
-    "id": "cm2s3akc200000cme6xt95b6m"
-  },
-  "entries": [
-    {
-      "player": {
-        "guest": true,
-        "playerId": "cm2s3aokq00010cmecg6bfbmi",
-        "PlayerCustomData": null
-      },
-      "score": 990
+    "leaderboard": {
+        "id": "cm2s3akc200000cme6xt95b6m",
+        "name": "Leaderboard Name",
+        "description": "Leaderboard Description"
     },
-    {
-      "player": {
-        "guest": true,
-        "playerId": "cm2s3auy400020cme2e21as3h",
-        "PlayerCustomData": "custom data"
-      },
-      "score": 988
-    },
-    ...
-  ],
-  "totalEntries": 480,
-  "pages": 48
+    "entries": [
+        {
+            "player": {
+                "guest": true,
+                "playerId": "cm2s3aokq00010cmecg6bfbmi",
+                "entryData": null
+            },
+            "score": 990
+        },
+        {
+            "player": {
+                "guest": true,
+                "playerId": "cm2s3auy400020cme2e21as3h",
+                "entryData": "custom data"
+            },
+            "score": 988
+        },
+        ...
+    ],
+    "totalEntries": 480,
+    "pages": 48
 }
 ```

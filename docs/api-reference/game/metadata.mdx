@@ -10,7 +10,7 @@ description: "Store and retrieve player metadata with the CrateBytes API."
 ### Endpoint
 
 ```http
-GET /api/game/metadata/get
+GET https://cratebytes.com/api/game/metadata/get
 ```
 
 <ParamField header="authorization (header)" type="string" required>
@@ -21,7 +21,9 @@ GET /api/game/metadata/get
 
 ```json
 {
-    "data": "metadata"
+    "status": 200,
+    "error": null,
+    "data": { "data": "metadata" }
 }
 ```
 
@@ -30,7 +32,7 @@ GET /api/game/metadata/get
 ### Endpoint
 
 ```http
-PUT /api/game/metadata/add
+PUT https://cratebytes.com/api/game/metadata/add
 ```
 
 <ParamField header="authorization (header)" type="string" required>
@@ -45,7 +47,9 @@ PUT /api/game/metadata/add
 
 ```json
 {
-    "data": "metadata"
+    "status": 200,
+    "error": null,
+    "data": { "data": "metadata" }
 }
 ```
 
@@ -54,9 +58,19 @@ PUT /api/game/metadata/add
 ### Endpoint
 
 ```http
-DELETE /api/game/metadata/delete
+DELETE https://cratebytes.com/api/game/metadata/delete
 ```
 
 <ParamField header="authorization (header)" type="string" required>
     Bearer [token]
 </ParamField>
+
+### Example Response
+
+```json
+{
+    "status": 200,
+    "error": null,
+    "data": { "message": "Deleted" }
+}
+```

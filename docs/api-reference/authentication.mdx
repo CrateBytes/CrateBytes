@@ -13,7 +13,7 @@ This method provides a seamless way for new users to get started while still ens
 ### Endpoint
 
 ```http
-POST /api/guestlogin
+POST https://cratebytes.com/api/platform/guest
 ```
 
 <ParamField body="projectKey (body)" type="string" required>
@@ -40,8 +40,12 @@ POST /api/guestlogin
 
 ```json
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-    "playerId": "cm2s2i8n500000cml3tqr0ko9"
+    "status": 200,
+    "error": null,
+    "data": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+        "playerId": "cm2s2i8n500000cml3tqr0ko9"
+    }
 }
 ```
 
@@ -57,7 +61,7 @@ Steam Authentication allows users to log in to the CrateBytes API using their St
 ### Endpoint
 
 ```http
-POST /api/steamlogin
+POST https://cratebytes.com/api/platform/steam
 ```
 
 <ParamField body="projectKey (body)" type="string" required>
@@ -82,7 +86,11 @@ POST /api/steamlogin
 
 ```json
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-    "playerId": "cm2s2i8n500000cml3tqr0ko9"
+    "status": 200,
+    "error": null,
+    "data": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+        "playerId": "cm2s2i8n500000cml3tqr0ko9"
+    }
 }
 ```

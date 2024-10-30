@@ -6,9 +6,14 @@ export async function DELETE({ locals, params, request }) {
     const projectKey = locals.user.projectKey;
 
     if (!projectKey || !playerId) {
-        return new Response("Project key or player id not provided", {
-            status: 400,
-        });
+        return new Response(
+            JSON.stringify({
+                status: 400,
+                error: "Project key or player id not provided",
+                data: {},
+            }),
+            { status: 400 }
+        );
     }
 
     const project = await prisma.project.findUnique({
@@ -21,9 +26,14 @@ export async function DELETE({ locals, params, request }) {
     });
 
     if (!project) {
-        return new Response("Project not found", {
-            status: 404,
-        });
+        return new Response(
+            JSON.stringify({
+                status: 404,
+                error: "Project not found",
+                data: {},
+            }),
+            { status: 404 }
+        );
     }
 
     await prisma.playerCustomData.delete({
@@ -35,5 +45,12 @@ export async function DELETE({ locals, params, request }) {
         },
     });
 
-    return new Response("Deleted");
+    return new Response(
+        JSON.stringify({
+            status: 200,
+            error: null,
+            data: { message: "Deleted" },
+        }),
+        { headers: { "Content-Type": "application/json" }, status: 200 }
+    );
 }
