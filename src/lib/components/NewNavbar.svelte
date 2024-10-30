@@ -34,7 +34,7 @@
 
     <header class="flex items-center justify-between py-5 px-3 bg-background drop-shadow-sm top-0 left-0 right-0 border-b-2 border-border">
         <button class="flex items-center gap-4" on:click={() => goto('/')}>
-            <img src="/CrateBytes.png" alt="CrateBytes" class="h-10 w-10 hidden sm:block" />
+            <img src="/favicon.png" alt="CrateBytes" class="h-10 w-10 hidden sm:block" />
             <h1 class="text-2xl font-bold">CrateBytes</h1>
         </button>
     
