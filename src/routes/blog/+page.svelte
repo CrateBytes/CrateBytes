@@ -1,5 +1,6 @@
 <script lang="ts">
     import { page } from '$app/stores';
+    import StarUsButton from '$lib/components/StarUsButton.svelte';
     import NewNavbar from '$lib/components/NewNavbar.svelte';
     import { onMount } from 'svelte';
     import * as Card from "$lib/components/ui/card";
@@ -119,4 +120,5 @@
         </Pagination.Content>
     </Pagination.Root>
 </main>
+<StarUsButton />
 <CustomFooter />

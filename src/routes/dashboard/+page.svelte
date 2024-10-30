@@ -20,6 +20,7 @@
     import { goto } from "$app/navigation";
     import NewNavbar from "$lib/components/NewNavbar.svelte";
     import CustomFooter from "$lib/components/CustomFooter.svelte";
+    import StarUsButton from '$lib/components/StarUsButton.svelte';
     export let data;
 
     const SplashText: string[] = [

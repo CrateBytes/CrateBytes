@@ -4,6 +4,7 @@
     import { page } from '$app/stores';
     import { Badge } from '$lib/components/ui/badge';
     import Icon from '@iconify/svelte';
+    import StarUsButton from '$lib/components/StarUsButton.svelte';
     
     export let data;
 
@@ -78,6 +79,8 @@
         </div>
     </article>
 </main>
+
+<StarUsButton />
 <CustomFooter />
 
 <style>

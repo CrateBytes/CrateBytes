@@ -22,9 +22,7 @@
         }
 
         const handleScroll = () => {
-            console.log(document.body.scrollTop);
-            
-            if (document.body.scrollTop > 100) {
+            if (document.body.scrollTop > 50) {
                 showButton = false;
             } else {
                 showButton = true;
