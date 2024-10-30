@@ -13,7 +13,7 @@ export const GET: RequestHandler = async () => {
     posts.posts.forEach((post) => {
         routes.push({
             path: "/blog/" + post.slug,
-            lastmod: post.date,
+            lastmod: new Date(post.date).toISOString().split("T")[0],
         });
     });
 
