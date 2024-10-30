@@ -3,8 +3,9 @@
     "version": "0.0.1",
     "scripts": {
         "dev": "vite dev",
-        "build": "vite build",
+        "vitebuild": "vite build",
         "preview": "vite preview",
+        "build": "node scripts/build.js",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
         "generate": "npx prisma generate",

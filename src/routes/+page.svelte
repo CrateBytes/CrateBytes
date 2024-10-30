@@ -1,4 +1,6 @@
 <script lang="ts">
+  import StarUsButton from './StarUsButton.svelte';
+
     import Button from "$lib/components/ui/button/button.svelte";
     import { signIn, signOut } from '@auth/sveltekit/client';
     import { page } from '$app/stores';
@@ -154,5 +156,7 @@
         </div>
     </section>
 </div>
+
+<StarUsButton />
 
 <CustomFooter />

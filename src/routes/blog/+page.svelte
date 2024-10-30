@@ -10,11 +10,13 @@
     import ChevronRight from "lucide-svelte/icons/chevron-right";
     import Icon from '@iconify/svelte';
 
-    let posts: App.Post[] = [];
+    export let data;
+
+    let posts: App.Post[] = data.posts;
     let isFetching = false;
     let currentPageNumber = 0;
-    let totalPages = 0;
-    $: totalPosts = 0;
+    let totalPages = data.totalPages;
+    $: totalPosts = data.totalPosts;
     $: perPage = 12;
 
     async function fetchLeaderboardEntries(page: number = 0) {
@@ -32,10 +34,6 @@
     function handlePageChange(page: number) {
         fetchLeaderboardEntries(page);
     }
-
-    onMount(async () => {
-        await fetchLeaderboardEntries(0);
-    });
 </script>
 
 <svelte:head>

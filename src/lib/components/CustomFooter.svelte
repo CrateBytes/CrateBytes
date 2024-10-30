@@ -16,6 +16,9 @@
         <a href="https://discord.gg/UP4kzXZ66g" target="_blank" rel="noopener noreferrer" class="mx-2 text-white hover:underline">
             <Icon icon="mdi:discord" class="inline-block w-6 h-6" />
         </a>
+        <a href="https://x.com/CrateBytes" target="_blank" rel="noopener noreferrer" class="mx-2 text-white hover:underline">
+            <Icon icon="mdi:twitter" class="inline-block w-6 h-6" />
+        </a>
         <a href="{$page.url.origin}/rss.xml" target="_blank" rel="noopener noreferrer" class="mx-2 text-white hover:underline">
             <Icon icon="mdi:rss" class="inline-block w-6 h-6" />
         </a>
