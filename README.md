@@ -1,8 +1,21 @@
 <h1 align="center">
-    <img align="center" alt="CrateBytes" src="assets/logo.jpg" style="width:100%;" />
+    <a href="https://cratebytes.com/">
+        <img align="center" alt="CrateBytes" src="assets/logo.jpg" style="width:100%;" />
+    </a>
 </h1>
 <p align="center"><img src="https://img.shields.io/discord/1300780575770021978?style=for-the-badge" alt="shields"> <img src='https://img.shields.io/badge/license-MIT-green?style=for-the-badge' /></p>
 
+<p align="center">
+  <a href="https://docs.cratebytes.com/"
+    target="_blank">
+      <b>📖 Documentation</b>
+  </a>
+    •
+  <a href="https://discord.gg/UP4kzXZ66g"
+    target="_blank">
+    <b>💬 Join Discord</b>
+  </a>
+</p>
 <h2 id="bytecrates">🚀 CrateBytes is the ultimate open-source backend solution for games</h2>
 
 -   ⚡ Seamless integration with game engines
