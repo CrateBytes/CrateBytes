@@ -34,7 +34,7 @@
 
 </script>
 
-<Button class="absolute bottom-4 text-white font-semibold rounded-lg shadow-lg flex items-center transition-all duration-200 ease-in-out {showButton ? "space-x-2 py-2 px-4 left-1/2 transform -translate-x-1/2" : "p-3 left-4"}" href="https://github/cratebytes/cratebytes" target="_blank">
+<Button class="absolute bottom-4 text-white font-semibold rounded-lg shadow-lg flex items-center transition-all duration-200 ease-in-out {showButton ? "space-x-2 py-2 px-4 left-1/2 transform -translate-x-1/2" : "p-3 left-4"}" href="https://github.com/cratebytes/cratebytes" target="_blank">
     <Icon icon="mdi:github" class="text-white w-5 h-5" />
 
     {#if showButton}
