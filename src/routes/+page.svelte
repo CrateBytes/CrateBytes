@@ -134,7 +134,7 @@
             <h2 class="text-2xl lg:text-4xl font-bold text-center mb-12">Pricing</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {#each plans as plan}
-                    <Card.Root class="rounded-lg shadow-md transition-transform duration-300 ease-in-out transform hover:scale-[1.01]">
+                    <Card.Root class="rounded-lg shadow-md transition-transform duration-200 ease-in-out transform hover:scale-[1.05]">
                         <Card.Header>
                             <Card.Title class="text-xl font-semibold mb-4">{plan.title}</Card.Title>
                         </Card.Header>

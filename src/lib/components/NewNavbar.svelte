@@ -95,7 +95,7 @@
             {#each tabs as tab}
                 <Tooltip.Root>
                     <Tooltip.Trigger>
-                        <Button class="!w-12 !h-12 !m-0 !p-0 flex items-center justify-center text-white" variant="{$page.url.pathname === tab.href ? "default" : "ghost"}" href={tab.href}>
+                        <Button class="!w-12 !h-12 !m-0 !p-0 flex items-center justify-center" variant="{$page.url.pathname === tab.href ? "default" : "ghost"}" href={tab.href}>
                             <Icon icon={tab.icon} width=32 height=32 />
                         </Button>
                     </Tooltip.Trigger>
