@@ -16,6 +16,7 @@
     import { createLeaderboardSchema, deleteLeaderboardSchema } from "../../../../../schema";
     import NewNavbar from '$lib/components/NewNavbar.svelte';
     import { goto } from "$app/navigation";
+    import { browser } from "$app/environment";
     export let data;
 
     const CreateLeaderboardForm = superForm(data.CreateLeaderboardForm, {
@@ -24,6 +25,8 @@
         onResult: async ({ result } : { result: any}) => {
             if (result.status !== 200) return;
             CreateLeaderboardDialogTrigger = false;
+
+            if(browser) window.location.href = `/dashboard/project/${data.project.id}/leaderboards/${result.data.leaderboardId}`;
         },
     });
 

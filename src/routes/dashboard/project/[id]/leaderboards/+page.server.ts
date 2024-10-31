@@ -92,7 +92,7 @@ export const actions: Actions = {
             });
         }
 
-        await prisma.leaderboard
+        const leaderboard = await prisma.leaderboard
             .create({
                 data: {
                     name: CreateLeaderboardForm.data.name,
@@ -110,6 +110,7 @@ export const actions: Actions = {
 
         return {
             CreateLeaderboardForm,
+            leaderboardId: leaderboard?.id,
         };
     },
     DeleteLeaderboard: async (event) => {
@@ -151,6 +152,12 @@ export const actions: Actions = {
                 DeleteLeaderboardForm,
             });
         }
+
+        await prisma.leaderboardEntry.deleteMany({
+            where: {
+                leaderboardId: DeleteLeaderboardForm.data.leaderboardId,
+            },
+        });
 
         await prisma.leaderboard
             .delete({

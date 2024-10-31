@@ -21,6 +21,8 @@
     import NewNavbar from "$lib/components/NewNavbar.svelte";
     import CustomFooter from "$lib/components/CustomFooter.svelte";
     import StarUsButton from '$lib/components/StarUsButton.svelte';
+    import { redirect } from '@sveltejs/kit';
+    import { browser } from '$app/environment';
     export let data;
 
     const SplashText: string[] = [
@@ -59,6 +61,8 @@
         onResult: async ({ result } : { result: any}) => {
             if (result.status !== 200) return;
             CreateProjectDialogTrigger = false;
+            
+            if(browser) window.location.href = `/dashboard/project/${result.data.projectId}`;
         },
     });
 

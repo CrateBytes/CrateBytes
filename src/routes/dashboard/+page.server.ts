@@ -57,7 +57,7 @@ export const actions: Actions = {
             });
         }
 
-        await prisma.project
+        const project = await prisma.project
             .create({
                 data: {
                     name: CreateProjectForm.data.name,
@@ -76,6 +76,7 @@ export const actions: Actions = {
 
         return {
             CreateProjectForm,
+            projectId: project?.id,
         };
     },
     DeleteProject: async (event) => {
@@ -96,6 +97,42 @@ export const actions: Actions = {
                 DeleteProjectForm,
             });
         }
+
+        await prisma.playerCustomData.deleteMany({
+            where: {
+                player: {
+                    projectId: DeleteProjectForm.data.ProjectId,
+                },
+            },
+        });
+
+        await prisma.playerSession.deleteMany({
+            where: {
+                player: {
+                    projectId: DeleteProjectForm.data.ProjectId,
+                },
+            },
+        });
+
+        await prisma.player.deleteMany({
+            where: {
+                projectId: DeleteProjectForm.data.ProjectId,
+            },
+        });
+
+        await prisma.leaderboardEntry.deleteMany({
+            where: {
+                leaderboard: {
+                    projectId: DeleteProjectForm.data.ProjectId,
+                },
+            },
+        });
+
+        await prisma.leaderboard.deleteMany({
+            where: {
+                projectId: DeleteProjectForm.data.ProjectId,
+            },
+        });
 
         await prisma.project
             .delete({

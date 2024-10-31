@@ -82,7 +82,9 @@
                         <span>Average Session Time</span>
                     </div>
                     <div class="text-4xl font-bold text-primary">
-                        {#if data.AveragePlayTime >= 3600}
+                        {#if isNaN(data.AveragePlayTime)}
+                            0s
+                        {:else if data.AveragePlayTime >= 3600}
                             {(data.AveragePlayTime / 3600).toFixed(2)}h
                         {:else if data.AveragePlayTime >= 60}
                             {(data.AveragePlayTime / 60).toFixed(2)}m
