@@ -4,7 +4,7 @@
 </script>
 
 <a href="https://docs.cratebytes.com/">
-    <Card.Root class="relative rounded-lg shadow-md cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-[1.01]">
+    <Card.Root class="relative rounded-lg shadow-md cursor-pointer transition-transform duration-200 ease-in-out transform hover:scale-[1.05]">
         <Card.Header>
             <Icon icon="fluent:book-20-filled" width="48" />
             <Card.Title class="text-xl font-semibold mb-4">Documentation</Card.Title>
@@ -20,7 +20,7 @@
 </a>
 
 <a href="https://discord.gg/UP4kzXZ66g" target="_blank">
-    <Card.Root class="relative rounded-lg shadow-md cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-[1.01]">
+    <Card.Root class="relative rounded-lg shadow-md cursor-pointer transition-transform duration-200 ease-in-out transform hover:scale-[1.05]">
         <Card.Header>
             <Icon icon="mdi:discord" width="48" />
             <Card.Title class="text-xl font-semibold mb-4">Discord Community</Card.Title>
@@ -36,7 +36,7 @@
 </a>
 
 <a href="/blog">
-    <Card.Root class="relative rounded-lg shadow-md cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-[1.01]">
+    <Card.Root class="relative rounded-lg shadow-md cursor-pointer transition-transform duration-200 ease-in-out transform hover:scale-[1.05]">
         <Card.Header>
             <Icon icon="fluent:news-20-filled" width="48" />
             <Card.Title class="text-xl font-semibold mb-4"> Blog </Card.Title>
