@@ -104,7 +104,7 @@
             <h2 class="text-2xl lg:text-4xl font-bold text-center mb-12">Features</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {#each features as feature}
-                    <Card.Root class="rounded-lg shadow-md transition-transform duration-300 ease-in-out transform hover:scale-[1.01]">
+                    <Card.Root class="rounded-lg shadow-md transition-transform duration-200 ease-in-out transform hover:scale-[1.05]">
                         <Card.Header>
                             <span class="text-4xl mb-4">{feature.icon}</span>
                             <Card.Title class="text-xl font-semibold mb-4">{feature.title}</Card.Title>
