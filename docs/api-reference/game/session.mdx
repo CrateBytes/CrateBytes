@@ -12,7 +12,7 @@ The `Start Session` endpoint is used to initiate a new game session for a player
 ### Endpoint
 
 ```http
-POST https://cratebytes.com/api/game/gameplay/start
+POST https://cratebytes.com/api/game/game/gameplay/start
 ```
 
 <ParamField header="authorization (header)" type="string" required>
@@ -23,17 +23,17 @@ POST https://cratebytes.com/api/game/gameplay/start
 
 ```json
 {
-    "status": 201,
-    "error": null,
+    "statusCode": 201,
     "data": { "message": "Session Started" }
 }
 ```
 
 ```json
 {
-    "status": 400,
-    "error": "Session already active",
-    "data": {}
+    "statusCode": 400,
+    "error": {
+        "message": "Session already active"
+    }
 }
 ```
 
@@ -44,7 +44,7 @@ The `Heartbeat` endpoint is used to keep an active game session alive. This is c
 ### Endpoint
 
 ```http
-POST https://cratebytes.com/api/game/gameplay/heartbeat
+POST https://cratebytes.com/api/game/game/gameplay/heartbeat
 ```
 
 <ParamField header="authorization (header)" type="string" required>
@@ -55,25 +55,27 @@ POST https://cratebytes.com/api/game/gameplay/heartbeat
 
 ```json
 {
-    "status": 200,
-    "error": null,
+    "statusCode": 200,
+
     "data": { "message": "Heartbeat" }
 }
 ```
 
 ```json
 {
-    "status": 403,
-    "error": "Session has expired",
-    "data": {}
+    "statusCode": 403,
+    "error": {
+        "message": "Session has expired"
+    }
 }
 ```
 
 ```json
 {
-    "status": 404,
-    "error": "No active session found",
-    "data": {}
+    "statusCode": 404,
+    "error": {
+        "message": "No active session found"
+    }
 }
 ```
 
@@ -84,7 +86,7 @@ The `End Session` endpoint is used to terminate an active game session for a pla
 ### Endpoint
 
 ```http
-POST https://cratebytes.com/api/game/gameplay/end
+POST https://cratebytes.com/api/game/game/gameplay/end
 ```
 
 <ParamField header="authorization (header)" type="string" required>
@@ -95,8 +97,8 @@ POST https://cratebytes.com/api/game/gameplay/end
 
 ```json
 {
-    "status": 200,
-    "error": null,
+    "statusCode": 200,
+
     "data": {
         "message": "Session ended successfully",
         "sessionDuration": 325 // in seconds
@@ -106,8 +108,9 @@ POST https://cratebytes.com/api/game/gameplay/end
 
 ```json
 {
-    "status": 404,
-    "error": "No active session found",
-    "data": {}
+    "statusCode": 404,
+    "error": {
+        "message": "No active session found"
+    }
 }
 ```

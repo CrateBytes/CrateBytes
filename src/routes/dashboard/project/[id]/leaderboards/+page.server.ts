@@ -153,12 +153,6 @@ export const actions: Actions = {
             });
         }
 
-        await prisma.leaderboardEntry.deleteMany({
-            where: {
-                leaderboardId: DeleteLeaderboardForm.data.leaderboardId,
-            },
-        });
-
         await prisma.leaderboard
             .delete({
                 where: {

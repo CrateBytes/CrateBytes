@@ -98,41 +98,41 @@ export const actions: Actions = {
             });
         }
 
-        await prisma.playerCustomData.deleteMany({
-            where: {
-                player: {
-                    projectId: DeleteProjectForm.data.ProjectId,
-                },
-            },
-        });
+        // await prisma.playerCustomData.deleteMany({
+        //     where: {
+        //         player: {
+        //             projectId: DeleteProjectForm.data.ProjectId,
+        //         },
+        //     },
+        // });
 
-        await prisma.playerSession.deleteMany({
-            where: {
-                player: {
-                    projectId: DeleteProjectForm.data.ProjectId,
-                },
-            },
-        });
+        // await prisma.playerSession.deleteMany({
+        //     where: {
+        //         player: {
+        //             projectId: DeleteProjectForm.data.ProjectId,
+        //         },
+        //     },
+        // });
 
-        await prisma.player.deleteMany({
-            where: {
-                projectId: DeleteProjectForm.data.ProjectId,
-            },
-        });
+        // await prisma.player.deleteMany({
+        //     where: {
+        //         projectId: DeleteProjectForm.data.ProjectId,
+        //     },
+        // });
 
-        await prisma.leaderboardEntry.deleteMany({
-            where: {
-                leaderboard: {
-                    projectId: DeleteProjectForm.data.ProjectId,
-                },
-            },
-        });
+        // await prisma.leaderboardEntry.deleteMany({
+        //     where: {
+        //         leaderboard: {
+        //             projectId: DeleteProjectForm.data.ProjectId,
+        //         },
+        //     },
+        // });
 
-        await prisma.leaderboard.deleteMany({
-            where: {
-                projectId: DeleteProjectForm.data.ProjectId,
-            },
-        });
+        // await prisma.leaderboard.deleteMany({
+        //     where: {
+        //         projectId: DeleteProjectForm.data.ProjectId,
+        //     },
+        // });
 
         await prisma.project
             .delete({

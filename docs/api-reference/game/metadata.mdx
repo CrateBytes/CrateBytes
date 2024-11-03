@@ -10,7 +10,7 @@ description: "Store and retrieve player metadata with the CrateBytes API."
 ### Endpoint
 
 ```http
-GET https://cratebytes.com/api/game/metadata/get
+GET https://cratebytes.com/api/game/game/metadata/get
 ```
 
 <ParamField header="authorization (header)" type="string" required>
@@ -21,8 +21,7 @@ GET https://cratebytes.com/api/game/metadata/get
 
 ```json
 {
-    "status": 200,
-    "error": null,
+    "statusCode": 200,
     "data": { "data": "metadata" }
 }
 ```
@@ -32,7 +31,7 @@ GET https://cratebytes.com/api/game/metadata/get
 ### Endpoint
 
 ```http
-PUT https://cratebytes.com/api/game/metadata/add
+PUT https://cratebytes.com/api/game/game/metadata/add
 ```
 
 <ParamField header="authorization (header)" type="string" required>
@@ -47,8 +46,7 @@ PUT https://cratebytes.com/api/game/metadata/add
 
 ```json
 {
-    "status": 200,
-    "error": null,
+    "statusCode": 200,
     "data": { "data": "metadata" }
 }
 ```
@@ -58,7 +56,7 @@ PUT https://cratebytes.com/api/game/metadata/add
 ### Endpoint
 
 ```http
-DELETE https://cratebytes.com/api/game/metadata/delete
+DELETE https://cratebytes.com/api/game/game/metadata/delete
 ```
 
 <ParamField header="authorization (header)" type="string" required>
@@ -69,8 +67,7 @@ DELETE https://cratebytes.com/api/game/metadata/delete
 
 ```json
 {
-    "status": 200,
-    "error": null,
+    "statusCode": 200,
     "data": { "message": "Deleted" }
 }
 ```

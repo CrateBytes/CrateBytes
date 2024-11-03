@@ -8,11 +8,11 @@ export async function GET({ locals, params, request }) {
     if (!projectKey || !playerId) {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Project key or player id not provided",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Project key or player id not provided",
+                },
+            })
         );
     }
 
@@ -28,11 +28,11 @@ export async function GET({ locals, params, request }) {
     if (!project) {
         return new Response(
             JSON.stringify({
-                status: 404,
-                error: "Project not found",
-                data: {},
-            }),
-            { status: 404 }
+                statusCode: 404,
+                error: {
+                    message: "Project not found",
+                },
+            })
         );
     }
 
@@ -51,19 +51,16 @@ export async function GET({ locals, params, request }) {
     if (!player) {
         return new Response(
             JSON.stringify({
-                status: 200,
-                error: "",
-                data: { data: "" }, // Explicitly returning an empty string for data
-            }),
-            { status: 200 }
+                statusCode: 200,
+                data: { data: "" },
+            })
         );
     }
 
     return new Response(
         JSON.stringify({
-            status: 200,
-            error: null,
-            data: player, // Return the player data directly
+            statusCode: 200,
+            data: player,
         }),
         { headers: { "Content-Type": "application/json" } }
     );
