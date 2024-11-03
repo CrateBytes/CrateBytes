@@ -1,5 +1,5 @@
 import type { RequestHandler } from "@sveltejs/kit";
-import { prisma } from "../../../../prisma.js";
+import { prisma } from "../../../../../prisma.js";
 
 export async function GET({ params, url }) {
     const { id } = params;
@@ -13,11 +13,11 @@ export async function GET({ params, url }) {
     if (!leaderboard) {
         return new Response(
             JSON.stringify({
-                status: 404,
-                error: "Leaderboard not found",
-                data: {},
-            }),
-            { status: 404 }
+                statusCode: 404,
+                error: {
+                    message: "Leaderboard not found",
+                },
+            })
         );
     }
 
@@ -58,8 +58,7 @@ export async function GET({ params, url }) {
 
     return new Response(
         JSON.stringify({
-            status: 200,
-            error: null,
+            statusCode: 200,
             data: {
                 leaderboard,
                 entries: formattedEntries,
@@ -68,7 +67,6 @@ export async function GET({ params, url }) {
             },
         }),
         {
-            status: 200,
             headers: { "Content-Type": "application/json" },
         }
     );

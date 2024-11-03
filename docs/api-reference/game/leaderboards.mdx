@@ -27,8 +27,7 @@ POST https://cratebytes.com/api/game/leaderboards/[leaderboard id]/submit
 
 ```json
 {
-    "status": 200,
-    "error": null,
+    "statusCode": 200,
     "data": { "message": "Score submitted" }
 }
 ```
@@ -40,13 +39,14 @@ The `Get Leaderboard Data` endpoint allows you to retrieve the data for a specif
 ### Endpoint
 
 ```http
-GET https://cratebytes.com/api/leaderboards/[leaderboard id]?page=[page number]
+GET https://cratebytes.com/api/game/leaderboards/[leaderboard id]?page=[page number]
 ```
 
 ### Example Response
 
 ```json
-{
+statusCode: 200,
+data: {
     "leaderboard": {
         "id": "cm2s3akc200000cme6xt95b6m",
         "name": "Leaderboard Name",

@@ -8,11 +8,11 @@ export async function DELETE({ locals, params, request }) {
     if (!projectKey || !playerId) {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Project key or player id not provided",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Project key or player id not provided",
+                },
+            })
         );
     }
 
@@ -28,11 +28,11 @@ export async function DELETE({ locals, params, request }) {
     if (!project) {
         return new Response(
             JSON.stringify({
-                status: 404,
-                error: "Project not found",
-                data: {},
-            }),
-            { status: 404 }
+                statusCode: 404,
+                error: {
+                    message: "Project not found",
+                },
+            })
         );
     }
 
@@ -47,10 +47,8 @@ export async function DELETE({ locals, params, request }) {
 
     return new Response(
         JSON.stringify({
-            status: 200,
-            error: null,
+            statusCode: 200,
             data: { message: "Deleted" },
-        }),
-        { headers: { "Content-Type": "application/json" }, status: 200 }
+        })
     );
 }
