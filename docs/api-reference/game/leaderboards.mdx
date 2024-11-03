@@ -12,7 +12,7 @@ The `Submit Score` endpoint allows you to submit a player's score to a specific 
 ### Endpoint
 
 ```http
-POST https://cratebytes.com/api/game/leaderboards/[leaderboard id]/submit
+POST https://cratebytes.com/api/game/game/leaderboards/[leaderboard id]/submit
 ```
 
 <ParamField body="score (body)" type="string" required>
@@ -39,7 +39,7 @@ The `Get Leaderboard Data` endpoint allows you to retrieve the data for a specif
 ### Endpoint
 
 ```http
-GET https://cratebytes.com/api/leaderboards/[leaderboard id]?page=[page number]
+GET https://cratebytes.com/api/game/leaderboards/[leaderboard id]?page=[page number]
 ```
 
 ### Example Response

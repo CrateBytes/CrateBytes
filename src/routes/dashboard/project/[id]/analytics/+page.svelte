@@ -15,7 +15,7 @@
         day: Date;
         count: number;
         averagePlayTime: number;
-    }) => d.day.getDate();
+    }) => d.day.getTime();
 
     const playerCountY = (d: {
         day: Date;
@@ -27,7 +27,7 @@
         day: Date;
         count: number;
         averagePlayTime: number;
-    }) => d.day.getDate();
+    }) => d.day.getTime();
 
     const averageSessionTimeY = (d: {
         day: Date;
@@ -37,7 +37,7 @@
 
     const playerCountTriggers = {
         [Scatter.selectors.point]: (d: {
-            day: number;
+            day: Date;
             count: number;
             averagePlayTime: number;
         }) => {
@@ -47,7 +47,12 @@
             else if (playTime >= 60) formattedPlayTime = `${(playTime / 60).toFixed(2)}m`;
             else formattedPlayTime = `${playTime.toFixed(2)}s`;
 
-            return `<span>Player Count: ${d.count}<br/>Average Session Time: ${formattedPlayTime}</span>`;
+            return `<span>Player Count: ${d.count}<br/>Average Session Time: ${formattedPlayTime}</span><br/>Day: ${d.day.toLocaleString(undefined, {
+                weekday: 'long',
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+            })}`;
         }
     }
 </script>
@@ -117,7 +122,6 @@
                 <VisScatter x={playerCountX} y={playerCountY}/>
                 <VisTooltip triggers={playerCountTriggers} horizontalPlacement="left" verticalPlacement="bottom"/>
                 <VisAxis type="y"/>
-                <VisAxis type="x"/>
             </VisXYContainer>
         </section>
 
@@ -130,7 +134,6 @@
                 <VisScatter x={averageSessionTimeX} y={averageSessionTimeY}/>
                 <VisTooltip triggers={playerCountTriggers} horizontalPlacement="left" verticalPlacement="bottom"/>
                 <VisAxis type="y"/>
-                <VisAxis type="x"/>
             </VisXYContainer>
         </section>
     </main>

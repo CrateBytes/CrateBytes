@@ -40,7 +40,7 @@
 
     async function fetchLeaderboardEntries(page: number = 0) {
         isFetching = true;
-        const res = await fetch(`/api/leaderboards/${data.leaderboard.id}?page=${page}`);
+        const res = await fetch(`/api/game/leaderboards/${data.leaderboard.id}?page=${page}`);
         const json = await res.json();
         const resData = json.data;
 

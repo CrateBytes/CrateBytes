@@ -1,6 +1,6 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import { GenerateToken } from "$lib/jwt";
-import { prisma } from "../../../../prisma";
+import { prisma } from "../../../../../prisma";
 import { createId } from "@paralleldrive/cuid2";
 
 export async function POST(event) {

@@ -1,5 +1,5 @@
 import type { RequestHandler } from "@sveltejs/kit";
-import { prisma } from "../../../../prisma.js";
+import { prisma } from "../../../../../prisma.js";
 
 export async function GET({ params, url }) {
     const { id } = params;
