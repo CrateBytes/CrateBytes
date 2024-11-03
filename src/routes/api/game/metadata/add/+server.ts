@@ -5,11 +5,11 @@ export async function PUT({ locals, params, request }) {
     const body = await request.json().catch(() => {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Invalid JSON",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Invalid JSON",
+                },
+            })
         );
     });
 
@@ -20,33 +20,33 @@ export async function PUT({ locals, params, request }) {
     if (!data || typeof data !== "string") {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Invalid data",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Invalid data",
+                },
+            })
         );
     }
 
     if (data.length > 1000) {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Data too long",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Data too long",
+                },
+            })
         );
     }
 
     if (!projectKey || !playerId) {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Project key or player id not provided",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Project key or player id not provided",
+                },
+            })
         );
     }
 
@@ -62,11 +62,11 @@ export async function PUT({ locals, params, request }) {
     if (!project) {
         return new Response(
             JSON.stringify({
-                status: 404,
-                error: "Project not found",
-                data: {},
-            }),
-            { status: 404 }
+                statusCode: 404,
+                error: {
+                    message: "Project not found",
+                },
+            })
         );
     }
 
@@ -89,10 +89,8 @@ export async function PUT({ locals, params, request }) {
 
     return new Response(
         JSON.stringify({
-            status: 200,
-            error: null,
+            statusCode: 200,
             data: { data: player.data },
-        }),
-        { headers: { "Content-Type": "application/json" }, status: 200 }
+        })
     );
 }

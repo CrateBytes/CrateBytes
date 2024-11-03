@@ -7,25 +7,25 @@ export async function POST(event) {
     const body = await event.request.json().catch(() => {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Invalid JSON",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Invalid JSON",
+                },
+            })
         );
     });
 
-    if (!body) return body; // Return early if the body is an error response.
+    if (!body) return body;
 
     const projectKey = body.projectKey;
     if (!projectKey) {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Project key not provided",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Project key not provided",
+                },
+            })
         );
     }
 
@@ -36,11 +36,11 @@ export async function POST(event) {
     if (!project) {
         return new Response(
             JSON.stringify({
-                status: 404,
-                error: "Project not found",
-                data: {},
-            }),
-            { status: 404 }
+                statusCode: 404,
+                error: {
+                    message: "Project not found",
+                },
+            })
         );
     }
 
@@ -56,11 +56,11 @@ export async function POST(event) {
         if (!player) {
             return new Response(
                 JSON.stringify({
-                    status: 404,
-                    error: "Player not found",
-                    data: {},
-                }),
-                { status: 404 }
+                    statusCode: 404,
+                    error: {
+                        message: "Player not found",
+                    },
+                })
             );
         }
 
@@ -80,12 +80,10 @@ export async function POST(event) {
 
         return new Response(
             JSON.stringify({
-                status: 200,
-                error: null,
+                statusCode: 200,
                 data: { token, playerId: player.playerId },
             }),
             {
-                status: 200,
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -112,12 +110,10 @@ export async function POST(event) {
 
     return new Response(
         JSON.stringify({
-            status: 200,
-            error: null,
+            statusCode: 200,
             data: { token, playerId: player.playerId },
         }),
         {
-            status: 200,
             headers: {
                 "Content-Type": "application/json",
             },

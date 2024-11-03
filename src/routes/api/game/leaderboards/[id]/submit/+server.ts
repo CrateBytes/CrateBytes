@@ -6,11 +6,11 @@ export async function POST({ locals, params, request }) {
     const body = await request.json().catch(() => {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Invalid JSON",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Invalid JSON",
+                },
+            })
         );
     });
 
@@ -21,9 +21,10 @@ export async function POST({ locals, params, request }) {
     if (!projectKey || !playerId || score == null) {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Project key, player id, or score not provided",
-                data: {},
+                statusCode: 400,
+                error: {
+                    message: "Project key, player id, or score not provided",
+                },
             }),
             { status: 400 }
         );
@@ -41,11 +42,11 @@ export async function POST({ locals, params, request }) {
     if (!leaderboard) {
         return new Response(
             JSON.stringify({
-                status: 404,
-                error: "Leaderboard not found",
-                data: {},
-            }),
-            { status: 404 }
+                statusCode: 404,
+                error: {
+                    message: "Leaderboard not found",
+                },
+            })
         );
     }
 
@@ -66,10 +67,8 @@ export async function POST({ locals, params, request }) {
 
     return new Response(
         JSON.stringify({
-            status: 200,
-            error: null,
+            statusCode: 200,
             data: { message: "Score submitted" },
-        }),
-        { status: 200 }
+        })
     );
 }

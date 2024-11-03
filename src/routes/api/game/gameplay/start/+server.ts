@@ -8,11 +8,11 @@ export async function POST(event) {
     if (!projectKey || !playerId) {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Project key or player id not provided",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Project key or player id not provided",
+                },
+            })
         );
     }
 
@@ -23,9 +23,10 @@ export async function POST(event) {
     if (!project) {
         return new Response(
             JSON.stringify({
-                status: 404,
-                error: "Project not found",
-                data: {},
+                statusCode: 404,
+                error: {
+                    message: "Project not found",
+                },
             }),
             { status: 404 }
         );
@@ -41,11 +42,11 @@ export async function POST(event) {
     if (!player) {
         return new Response(
             JSON.stringify({
-                status: 404,
-                error: "Player not found",
-                data: {},
-            }),
-            { status: 404 }
+                statusCode: 404,
+                error: {
+                    message: "Player not found",
+                },
+            })
         );
     }
 
@@ -60,11 +61,11 @@ export async function POST(event) {
     if (activeSession) {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Session already active",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Session already active",
+                },
+            })
         );
     }
 
@@ -78,10 +79,8 @@ export async function POST(event) {
 
     return new Response(
         JSON.stringify({
-            status: 201,
-            error: null,
+            statusCode: 200,
             data: { message: "Session Started" },
-        }),
-        { status: 201 }
+        })
     );
 }

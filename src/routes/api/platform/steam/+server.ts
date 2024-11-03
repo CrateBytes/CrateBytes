@@ -8,15 +8,15 @@ export async function POST(event) {
     const body = await event.request.json().catch(() => {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Invalid JSON",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Invalid JSON",
+                },
+            })
         );
     });
 
-    if (!body) return body; // Return early if the body is an error response.
+    if (!body) return body;
 
     const steamAuthTicket = body.steamAuthTicket;
     const projectKey = body.projectKey;
@@ -24,11 +24,11 @@ export async function POST(event) {
     if (!projectKey || !steamAuthTicket) {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Project key or steam auth ticket not provided",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Project key or steam auth ticket not provided",
+                },
+            })
         );
     }
 
@@ -39,11 +39,11 @@ export async function POST(event) {
     if (!project) {
         return new Response(
             JSON.stringify({
-                status: 404,
-                error: "Project not found",
-                data: {},
-            }),
-            { status: 404 }
+                statusCode: 404,
+                error: {
+                    message: "Project not found",
+                },
+            })
         );
     }
 
@@ -72,12 +72,10 @@ export async function POST(event) {
 
     return new Response(
         JSON.stringify({
-            status: 200,
-            error: null,
+            statusCode: 200,
             data: { token, playerId },
         }),
         {
-            status: 200,
             headers: {
                 "Content-Type": "application/json",
             },
@@ -93,33 +91,33 @@ async function AuthSteam(steamAuthTicket: string, projectKey: string) {
     if (!project) {
         return new Response(
             JSON.stringify({
-                status: 404,
-                error: "Project not found",
-                data: {},
-            }),
-            { status: 404 }
+                statusCode: 404,
+                error: {
+                    message: "Project not found",
+                },
+            })
         );
     }
 
     if (project.steamPublisherKey === null) {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Project does not have steam publisher key",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Project does not have steam publisher key",
+                },
+            })
         );
     }
 
     if (project.steamAppId === null) {
         return new Response(
             JSON.stringify({
-                status: 400,
-                error: "Project does not have steam app id",
-                data: {},
-            }),
-            { status: 400 }
+                statusCode: 400,
+                error: {
+                    message: "Project does not have steam app id",
+                },
+            })
         );
     }
 
@@ -148,11 +146,11 @@ async function AuthSteam(steamAuthTicket: string, projectKey: string) {
     if (steamAuthResponse.data.response.params.result !== "OK") {
         return new Response(
             JSON.stringify({
-                status: 401,
-                error: "Steam authentication failed",
-                data: {},
-            }),
-            { status: 401 }
+                statusCode: 401,
+                error: {
+                    message: "Steam authentication failed",
+                },
+            })
         );
     }
 
