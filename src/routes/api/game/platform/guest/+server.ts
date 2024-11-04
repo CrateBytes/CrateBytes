@@ -45,7 +45,7 @@ export async function POST(event) {
     }
 
     // Login to existing Player
-    if (body.playerId) {
+    if (body.playerId && body.playerId.length > 0) {
         const player = await prisma.player.findUnique({
             where: {
                 playerId: body.playerId,
