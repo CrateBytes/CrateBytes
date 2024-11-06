@@ -7,6 +7,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum ScriptEventType {
+  GameplayStart
+  GameplayEnd
+  LeaderboardSubmit
+  MetadataAdd
+  MetadataDelete
+}
+
 model User {
   id            String          @id @default(cuid()) @unique
   name          String?
@@ -82,6 +90,20 @@ model Project {
   Players                  Player[]
   PlayerSession            PlayerSession[]
   Leaderboard              Leaderboard[]
+  ProjectScripts           ProjectScript[]
+}
+
+model ProjectScript {
+  id                       String  @id @default(cuid()) @unique
+  projectId                String
+  script                   String  @db.Text
+  eventType                ScriptEventType
+  project                  Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+
+  @@unique([projectId, eventType])
 }
 
 model Player {

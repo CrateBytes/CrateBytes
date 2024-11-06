@@ -1,5 +1,6 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import { prisma } from "../../../../../prisma.js";
+import { runScript } from "../../../../../cloud/CloudScriptingHandler.js";
 
 export async function PUT({ locals, params, request }) {
     const body = await request.json().catch(() => {
@@ -13,7 +14,7 @@ export async function PUT({ locals, params, request }) {
         );
     });
 
-    const data = body?.data;
+    let data = body?.data;
     const playerId = locals.user.playerId;
     const projectKey = locals.user.projectKey;
 
@@ -70,7 +71,74 @@ export async function PUT({ locals, params, request }) {
         );
     }
 
-    const player = await prisma.playerCustomData.upsert({
+    //#region Scripting
+
+    const player = await prisma.player.findUnique({
+        where: {
+            playerId,
+            projectId: project.id,
+        },
+    });
+
+    if (!player) {
+        return new Response(
+            JSON.stringify({
+                statusCode: 404,
+                error: {
+                    message: "Player not found",
+                },
+            })
+        );
+    }
+
+    const script = await prisma.projectScript.findUnique({
+        where: {
+            projectId_eventType: {
+                projectId: project.id,
+                eventType: "MetadataAdd",
+            },
+        },
+        select: {
+            script: true,
+        },
+    });
+
+    if (script) {
+        const result = await runScript(script.script, {
+            player: {
+                playerId: player.playerId,
+                guest: player.guest,
+                playTime: player.playTime,
+                lastPlayed: player.lastPlayed,
+            },
+        }).catch((error) => {
+            return new Response(
+                JSON.stringify({
+                    statusCode: 500,
+                    error: {
+                        message: "Error running script",
+                        error,
+                    },
+                })
+            );
+        });
+
+        if (result == null || typeof result !== "string") {
+            return new Response(
+                JSON.stringify({
+                    statusCode: 400,
+                    error: {
+                        message: "Script must return string",
+                    },
+                })
+            );
+        }
+
+        data = result;
+    }
+    //#endregion
+
+    const playerData = await prisma.playerCustomData.upsert({
         where: {
             playerId_projectId: {
                 playerId: playerId,
@@ -90,7 +158,7 @@ export async function PUT({ locals, params, request }) {
     return new Response(
         JSON.stringify({
             statusCode: 200,
-            data: { data: player.data },
+            data: { data: playerData.data },
         })
     );
 }

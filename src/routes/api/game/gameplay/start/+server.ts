@@ -1,5 +1,6 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import { prisma } from "../../../../../prisma.js";
+import { runScript } from "../../../../../cloud/CloudScriptingHandler.js";
 
 export async function POST(event) {
     const playerId = event.locals.user.playerId;
@@ -68,6 +69,63 @@ export async function POST(event) {
             })
         );
     }
+
+    //#region Scripting
+    const script = await prisma.projectScript.findUnique({
+        where: {
+            projectId_eventType: {
+                projectId: project.id,
+                eventType: "GameplayStart",
+            },
+        },
+        select: {
+            script: true,
+        },
+    });
+
+    if (script) {
+        const result = await runScript(script.script, {
+            player: {
+                playerId: player.playerId,
+                guest: player.guest,
+                playTime: player.playTime,
+                lastPlayed: player.lastPlayed,
+            },
+        }).catch((error) => {
+            return new Response(
+                JSON.stringify({
+                    statusCode: 500,
+                    error: {
+                        message: "Error running script",
+                        error,
+                    },
+                })
+            );
+        });
+
+        if (typeof result === "boolean" && !result) {
+            return new Response(
+                JSON.stringify({
+                    statusCode: 400,
+                    error: {
+                        message: "Script returned false",
+                    },
+                })
+            );
+        }
+
+        if (typeof result !== "boolean") {
+            return new Response(
+                JSON.stringify({
+                    statusCode: 400,
+                    error: {
+                        message: "Script must return boolean",
+                    },
+                })
+            );
+        }
+    }
+    //#endregion
 
     await prisma.playerSession.create({
         data: {

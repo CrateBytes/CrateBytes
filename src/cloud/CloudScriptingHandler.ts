@@ -1,40 +1,33 @@
 import ivm from "isolated-vm";
 import * as ts from "typescript";
 
-export default class CloudScriptingHandler {
-    async runScript(cloudScript: string, inputs: any) {
-        const transpiledCode = ts.transpile(cloudScript);
+async function prepareCode(cloudScript: string, inputs: any): Promise<string> {
+    cloudScript += `
+        const inputs = ${JSON.stringify(inputs)};
+        let result = code(inputs);
+        let ret;
+        ret = result;
+    `;
+    return cloudScript;
+}
+
+export async function runScript(cloudScript: string, inputs: any) {
+    try {
+        const code = await prepareCode(cloudScript, inputs);
         const isolate = new ivm.Isolate({ memoryLimit: 8 });
         const context = isolate.createContextSync();
 
         const jail = context.global;
         await jail.set("global", jail.derefInto());
 
-        const script = await isolate.compileScript(transpiledCode);
-        await script.run(context);
+        const script = await isolate.compileScript(code);
+        const result = await script.run(context, {
+            promise: true,
+            timeout: 6 * 1000,
+        });
 
-        await context.evalClosure(
-            `(async () => {
-                const inputs = ${JSON.stringify(inputs)};
-                const result = await code(inputs);
-                global.result = result;
-            })()`
-        );
-
-        const result = await context.global.get("result");
         return result;
+    } catch (error: any) {
+        throw new Error(`Error running script: ${error}`);
     }
 }
-
-const cloudScript = `
-async function code(inputs) {
-return "Hello, " + inputs.name;
-}
-`;
-
-const handler = new CloudScriptingHandler();
-
-handler
-    .runScript(cloudScript, { name: "Alice" })
-    .then((result) => console.log(result))
-    .catch((error) => console.error("Error:", error));

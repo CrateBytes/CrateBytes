@@ -36,6 +36,21 @@ export const deleteLeaderboardEntrySchema = z.object({
 });
 //#endregion
 
+//#region Scripts
+export const editScriptSchema = z.object({
+    projectId: z.string(),
+    eventType: z.string(),
+    script: z.string(),
+});
+
+export const testScriptSchema = z.object({
+    projectId: z.string(),
+    eventType: z.string(),
+    script: z.string(),
+    inputs: z.string(),
+});
+//#endregion
+
 export type CreateProjectSchema = typeof createProjectSchema;
 export type DeleteProjectSchema = typeof deleteProjectSchema;
 export type UpdateProjectGeneralSchema = typeof updateProjectGeneralSchema;
@@ -43,3 +58,6 @@ export type UpdateProjectGeneralSchema = typeof updateProjectGeneralSchema;
 export type CreateLeaderboardSchema = typeof createLeaderboardSchema;
 export type DeleteLeaderboardSchema = typeof deleteLeaderboardSchema;
 export type DeleteLeaderboardEntrySchema = typeof deleteLeaderboardEntrySchema;
+
+export type EditScriptSchema = typeof editScriptSchema;
+export type TestScriptSchema = typeof testScriptSchema;
