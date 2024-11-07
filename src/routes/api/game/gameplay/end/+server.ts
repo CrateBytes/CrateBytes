@@ -1,3 +1,4 @@
+import { runScript } from "../../../../../cloud/CloudScriptingHandler.js";
 import { prisma } from "../../../../../prisma.js";
 
 const EXPIRATION_TIME_MS = 10 * 60 * 1000;
@@ -87,6 +88,64 @@ export async function POST(event) {
     const sessionStartTime = new Date(activeSession.startTime);
     const sessionDuration =
         (sessionEndTime.getTime() - sessionStartTime.getTime()) / 1000;
+
+    //#region Scripting
+    const script = await prisma.projectScript.findUnique({
+        where: {
+            projectId_eventType: {
+                projectId: project.id,
+                eventType: "GameplayEnd",
+            },
+        },
+        select: {
+            script: true,
+        },
+    });
+
+    if (script) {
+        const result = await runScript(script.script, {
+            gameplayDuration: sessionDuration,
+            player: {
+                playerId: player.playerId,
+                guest: player.guest,
+                playTime: player.playTime,
+                lastPlayed: player.lastPlayed,
+            },
+        }).catch((error) => {
+            return new Response(
+                JSON.stringify({
+                    statusCode: 500,
+                    error: {
+                        message: "Error running script",
+                        error,
+                    },
+                })
+            );
+        });
+
+        if (typeof result === "boolean" && !result) {
+            return new Response(
+                JSON.stringify({
+                    statusCode: 400,
+                    error: {
+                        message: "Script returned false",
+                    },
+                })
+            );
+        }
+
+        if (typeof result !== "boolean") {
+            return new Response(
+                JSON.stringify({
+                    statusCode: 400,
+                    error: {
+                        message: "Script must return boolean",
+                    },
+                })
+            );
+        }
+    }
+    //#endregion
 
     await prisma.playerSession.update({
         where: { id: activeSession.id },

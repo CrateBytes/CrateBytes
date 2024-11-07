@@ -21,7 +21,7 @@ export async function handle({ event, resolve }) {
         return AuthHandle({ event, resolve });
     }
 
-    if (isAuthUrl("/api/game")) {
+    if (isAuthUrl(event.url.pathname)) {
         const token = event.request.headers
             .get("authorization")
             ?.replace("Bearer ", "");
