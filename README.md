@@ -27,8 +27,9 @@ Here are some of the project's best features:
 
 -   📊 Game Analytics
 -   🏆 Leaderboards
--   🎮 Steam & Guest Login
+-   🎮 Steam & Guest Authentication
 -   🗂️ Player metadata
+-   ☁️ Cloud Scripting
 -   📝 Feedback form [soon]
 -   ⭐ Feedback rating system [soon]
 -   🤖 Feedback Discord bot integration [soon]
