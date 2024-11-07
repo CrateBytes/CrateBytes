@@ -44,6 +44,9 @@ export async function DELETE({ locals, params, request }) {
             playerId,
             projectId: project.id,
         },
+        include: {
+            PlayerCustomData: true,
+        },
     });
 
     if (!player) {
@@ -77,6 +80,10 @@ export async function DELETE({ locals, params, request }) {
                 playTime: player.playTime,
                 lastPlayed: player.lastPlayed,
             },
+            data:
+                player.PlayerCustomData.find(
+                    (customData) => customData.projectId === project.id
+                )?.data || "",
         }).catch((error) => {
             return new Response(
                 JSON.stringify({

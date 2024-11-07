@@ -78,6 +78,9 @@ export async function PUT({ locals, params, request }) {
             playerId,
             projectId: project.id,
         },
+        include: {
+            PlayerCustomData: true,
+        },
     });
 
     if (!player) {
@@ -110,6 +113,11 @@ export async function PUT({ locals, params, request }) {
                 guest: player.guest,
                 playTime: player.playTime,
                 lastPlayed: player.lastPlayed,
+                data: data,
+                oldData:
+                    player.PlayerCustomData.find(
+                        (d) => d.projectId === project.id
+                    )?.data || "",
             },
         }).catch((error) => {
             return new Response(

@@ -105,6 +105,11 @@ export async function POST({ locals, params, request }) {
                 playTime: player.playTime,
                 lastPlayed: player.lastPlayed,
             },
+            leaderboard: {
+                id: leaderboard.id,
+                name: leaderboard.name,
+            },
+            score: score,
         }).catch((error) => {
             return new Response(
                 JSON.stringify({
