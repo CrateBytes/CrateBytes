@@ -74,7 +74,6 @@ async function code(inputs) {
  * This script is ran when a player submits a score to the leaderboard
  *
  * @param {Object} inputs - The input parameters for the event
- * @param {string} inputs.leaderboard - The ID of the leaderboard
  * @param {string} inputs.leaderboard.id - The ID of the leaderboard
  * @param {string} inputs.leaderboard.name - The name of the leaderboard
  * @param {number} inputs.score - The score submitted by the player

@@ -165,7 +165,7 @@
         <div class="flex flex-col items-center gap-2 text-center">
             <h1 class="text-4xl font-bold"> Cloud Scripting </h1>
             <p class="text-lg text-muted-foreground">
-                Here, you can create TypeScript scripts for your project that execute in response to specific events.
+                Here, you can create TypeScript scripts for your project that execute in response to specific events. Check out the <a href="https://docs.cratebytes.com/api-reference/cloud-scripting" class="underline text-blue-600" target="_blank">documentation</a> for more information.
             </p>
         </div>
 
