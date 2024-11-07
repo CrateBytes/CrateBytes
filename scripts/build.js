@@ -22,4 +22,19 @@ fs.writeFileSync(
     indexContent.replace("{ path, host, port }", "port")
 );
 
+// read the shims.js
+const shimsFile = path.resolve(buildDir, "shims.js");
+let shimsContent = fs.readFileSync(shimsFile, "utf8");
+
+shimsContent = `import { fileURLToPath } from "url";\n` + shimsContent;
+// replace "const globals = {" with  "const globals = {\n__filename: fileURLToPath(import.meta.url),"
+shimsContent = shimsContent.replace(
+    "const globals = {",
+    "const globals = {\n__filename: fileURLToPath(import.meta.url),"
+);
+
+console.log("Writing shims file...");
+
+fs.writeFileSync(shimsFile, shimsContent);
+
 console.log("Build script completed successfully.");
