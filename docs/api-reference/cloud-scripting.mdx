@@ -1,0 +1,236 @@
+---
+sidebarTitle: "Cloud Scripting"
+title: "Cloud Scripting"
+icon: "cloud-bolt"
+description: "Learn how to use Cloud Scripting to run custom server-side logic in Cratebytes."
+---
+
+# Cloud Scripting Documentation
+
+Cloud Scripting in Cratebytes enables developers to execute server-side JavaScript code to manage and validate data dynamically. This feature can be utilized across different gameplay events, providing flexibility and control over player data. Please note that, currently, custom npm packages cannot be used within Cloud Scripting, though support for this is coming soon.
+
+<Warning>
+    Custom npm packages are not yet supported but will be available in future
+    updates.
+</Warning>
+
+## Supported Events
+
+Cloud Scripting currently supports the following events:
+
+-   **GameplayStart**: Triggered when a gameplay session starts.
+-   **GameplayEnd**: Triggered when a gameplay session ends.
+-   **LeaderboardSubmit**: Triggered when a player submits a score to a leaderboard.
+-   **MetadataAdd**: Triggered when metadata is added or updated for a player.
+-   **MetadataDelete**: Triggered when metadata is deleted for a player.
+
+## Example Usage
+
+Each event comes with predefined script templates to guide you in implementing custom logic.
+
+### Event: Gameplay Start
+
+The **Gameplay Start** event triggers when a player begins a gameplay session. This event allows developers to execute custom logic that can validate player information, initialize session data, or apply other rules at the beginning of a session.
+
+#### Use Cases
+
+1.  **Ensuring player eligibility:** Check if the player meets certain criteria to start the session, like account status or minimum required playtime.
+2.  **Dynamic adjustments:** Modify gameplay parameters dynamically, such as adjusting difficulty based on the player’s previous performance.
+
+```javascript
+/**
+ * This script is ran when gameplay starts for a player
+ *
+ * @param {Object} inputs - The input parameters for the event.
+ * @param {Object} inputs.player - The player object containing player information.
+ * @param {string} inputs.player.playerId - The unique identifier for the player.
+ * @param {boolean} inputs.player.guest - Indicates if the player is a guest.
+ * @param {number} inputs.player.playTime - The duration of playtime in seconds.
+ * @param {Date} inputs.player.lastPlayed - The timestamp of the last gameplay session.
+ * @returns {Promise<boolean>} - Return true or false, false will stop the event
+ */
+async function code(inputs) {
+    return true;
+}
+```
+
+**Sample Input:**
+
+```json
+{
+    "player": {
+        "playerId": "bcbmvy059xvmz5epv50vqokd",
+        "guest": true,
+        "playTime": 3600,
+        "lastPlayed": "2023-09-01T12:00:00Z"
+    }
+}
+```
+
+### Event: Gameplay End
+
+The **Gameplay End** event triggers when a player completes a gameplay session. This event offers developers an opportunity to validate the session, analyze player behavior, and decide whether or not to save the session’s data. It’s useful for performing various post-gameplay tasks that can enhance player experience, support data tracking, and improve gameplay analytics.
+
+#### Use Cases
+
+1. **Session Validation**  
+   Use this event to verify the integrity of the gameplay session. For instance, if the session duration (`gameplayDuration`) is unusually short or suspiciously long, you may want to log these anomalies or flag them for further investigation. By validating gameplay data at this point, you can help maintain accurate session records and prevent misuse.
+
+```javascript
+/**
+ * This script is ran when gameplay ends for a player
+ *
+ * @param {Object} inputs - The input parameters for the event
+ * @param {string} inputs.gameplayDuration - The duration of the gameplay session in seconds
+ * @param {Object} inputs.player - The player object containing player information.
+ * @param {string} inputs.player.playerId - The unique identifier for the player.
+ * @param {boolean} inputs.player.guest - Indicates if the player is a guest.
+ * @param {number} inputs.player.playTime - The duration of playtime in seconds.
+ * @param {Date} inputs.player.lastPlayed - The timestamp of the last gameplay session.
+ * @returns {Promise<boolean>} - Return true or false, false will stop the event and prevents saving the gameplay session
+ */
+async function code(inputs) {
+    return true;
+}
+```
+
+**Sample Input:**
+
+```json
+{
+    "gameplayDuration": 3600,
+    "player": {
+        "playerId": "bcbmvy059xvmz5epv50vqokd",
+        "guest": true,
+        "playTime": 3600,
+        "lastPlayed": "2023-09-01T12:00:00Z"
+    }
+}
+```
+
+### Event: Leaderboard Submit
+
+The **Leaderboard Submit** event triggers when a player submits a score to a leaderboard. This event enables developers to validate, adjust, or selectively save leaderboard scores based on specific conditions, enhancing the fairness and functionality of leaderboard systems.
+
+#### Use Cases
+
+1. **Validating Score Integrity**
+   Ensure the submitted score meets certain criteria, such as a minimum score threshold or a maximum allowable score. This helps prevent artificially inflated or unrealistic scores from being posted to leaderboards, maintaining a fair competitive environment.
+
+2. **Guest Player Restrictions**
+   Restrict guest players from submitting scores to certain leaderboards, or apply different scoring logic for guest accounts. By filtering out or limiting guest scores, developers can encourage account creation while ensuring leaderboard authenticity.
+
+3. **Dynamic Score Adjustments**
+   Adjust the score before submission based on the player's session details or historical performance. For example, you could apply bonuses to frequent players or introduce penalties based on recent gameplay metrics, providing an additional layer of engagement and competitiveness.
+
+```javascript
+/**
+ * This script is ran when a player submits a score to the leaderboard
+ *
+ * @param {Object} inputs - The input parameters for the event
+ * @param {string} inputs.leaderboard.id - The ID of the leaderboard
+ * @param {string} inputs.leaderboard.name - The name of the leaderboard
+ * @param {number} inputs.score - The score submitted by the player
+ * @param {Object} inputs.player - The player object containing player information.
+ * @param {string} inputs.player.playerId - The unique identifier for the player.
+ * @param {boolean} inputs.player.guest - Indicates if the player is a guest.
+ * @param {number} inputs.player.playTime - The duration of playtime in seconds.
+ * @param {Date} inputs.player.lastPlayed - The timestamp of the last gameplay session.
+ * @returns {Promise<number>} - Return the score to be saved to the leaderboard, return -1 to prevent saving the score
+ */
+async function code(inputs) {
+    return inputs.score;
+}
+```
+
+**Sample Input:**
+
+```json
+{
+    "leaderboard": {
+        "id": "cm2m56mkq0006bj6w4qksjlgq",
+        "name": "foo leaderboard"
+    },
+    "score": 100,
+    "player": {
+        "playerId": "bcbmvy059xvmz5epv50vqokd",
+        "guest": true,
+        "playTime": 3600,
+        "lastPlayed": "2023-09-01T12:00:00Z"
+    }
+}
+```
+
+### Event: Metadata Add
+
+Runs when metadata is added or updated for a player.
+
+```javascript
+/**
+ * This script is ran when metadata is added/updated for a player
+ *
+ * @param {Object} inputs - The input parameters for the event
+ * @param {string} inputs.data - the metadata to be added/updated
+ * @param {string} inputs.oldData - the previous metadata
+ * @param {Object} inputs.player - The player object containing player information.
+ * @param {string} inputs.player.playerId - The unique identifier for the player.
+ * @param {boolean} inputs.player.guest - Indicates if the player is a guest.
+ * @param {number} inputs.player.playTime - The duration of playtime in seconds.
+ * @param {Date} inputs.player.lastPlayed - The timestamp of the last gameplay session.
+ * @returns {Promise<string>} - Return the metadata to be saved, return null to prevent saving the metadata
+ */
+async function code(inputs) {
+    return inputs.data;
+}
+```
+
+**Sample Input:**
+
+```json
+{
+    "data": "metadata",
+    "oldData": "old metadata",
+    "player": {
+        "playerId": "bcbmvy059xvmz5epv50vqokd",
+        "guest": true,
+        "playTime": 3600,
+        "lastPlayed": "2023-09-01T12:00:00Z"
+    }
+}
+```
+
+### Event: Metadata Delete
+
+Runs when metadata is deleted for a player.
+
+```javascript
+/**
+ * This script is ran when metadata is deleted for a player
+ *
+ * @param {Object} inputs - The input parameters for the event
+ * @param {string} inputs.data - the metadata to be deleted
+ * @param {Object} inputs.player - The player object containing player information.
+ * @param {string} inputs.player.playerId - The unique identifier for the player.
+ * @param {boolean} inputs.player.guest - Indicates if the player is a guest.
+ * @param {number} inputs.player.playTime - The duration of playtime in seconds.
+ * @param {Date} inputs.player.lastPlayed - The timestamp of the last gameplay session.
+ * @returns {Promise<boolean>} - Return true to delete the metadata, return false to prevent deleting the metadata
+ */
+async function code(inputs) {
+    return true;
+}
+```
+
+**Sample Input:**
+
+```json
+{
+    "data": "metadata",
+    "player": {
+        "playerId": "bcbmvy059xvmz5epv50vqokd",
+        "guest": true,
+        "playTime": 3600,
+        "lastPlayed": "2023-09-01T12:00:00Z"
+    }
+}
+```

@@ -45,7 +45,7 @@
         },
         {
             "group": "API Reference",
-            "pages": ["api-reference/overview"]
+            "pages": ["api-reference/overview", "api-reference/cloud-scripting"]
         },
         {
             "group": "Game Authentication API",
